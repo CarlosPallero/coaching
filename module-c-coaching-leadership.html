@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coaching Leadership — C of the AGILE Leadership Framework</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0B0F14;
+  --surface:   #111C18;
+  --surface-2: #172210;
+  --surface-3: #1C2A18;
+  --text-1:    #F0EDE6;
+  --text-2:    #C4BFB4;
+  --text-3:    #8A8880;
+  --gold:      #C9A84C;
+  --gold-dim:  #6B5520;
+  --gold-subtle:rgba(201,168,76,0.07);
+  /* Module C — deep emerald */
+  --c:         #2D9E6B;
+  --c-light:   #5DC99A;
+  --c-bright:  #7EDAAE;
+  --c-subtle:  rgba(45,158,107,0.10);
+  --c-border:  rgba(45,158,107,0.32);
+  --c-dark:    #1A5C40;
+  /* Supporting */
+  --amber:     #D4854A;
+  --amber-l:   #EBA870;
+  --amber-s:   rgba(212,133,74,0.10);
+  --blue:      #4A82C9;
+  --blue-l:    #7AAEE8;
+  --blue-s:    rgba(74,130,201,0.10);
+  --purple:    #8A5DC9;
+  --purple-l:  #B08AE8;
+  --red:       #C94A4A;
+  --red-l:     #E87A7A;
+  --red-s:     rgba(201,74,74,0.10);
+  --border:    #243020;
+  --border-2:  #344530;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans:  'DM Sans', system-ui, sans-serif;
+  --mono:  'DM Mono', monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text-1);font-family:var(--sans);font-weight:400;line-height:1.7;overflow-x:hidden;}
+
+/* ── Progress ── */
+#progress-bar{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--c-light);z-index:1000;transition:width .1s linear;}
+
+/* ── Nav ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:0 3.5rem;height:60px;display:flex;align-items:center;justify-content:space-between;background:rgba(11,15,14,.93);backdrop-filter:blur(16px);border-bottom:1px solid rgba(36,48,32,.7);}
+.nav-brand{display:flex;align-items:center;gap:1.2rem;}
+.nav-agile-pills{display:flex;gap:3px;}
+.nav-pill{font-family:var(--mono);font-size:.7rem;font-weight:500;width:22px;height:22px;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);color:var(--text-3);}
+.nav-pill.done{border-color:var(--gold-dim);color:var(--gold-dim);}
+.nav-pill.active-c{background:var(--c);border-color:var(--c);color:#fff;font-weight:600;}
+.nav-brand-label{font-family:var(--serif);font-size:.88rem;color:var(--text-2);}
+nav ul{display:flex;list-style:none;gap:1.8rem;}
+nav ul li a{font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);text-decoration:none;transition:color .2s;font-family:var(--mono);}
+nav ul li a:hover,nav ul li a.active{color:var(--c-light);}
+
+/* ── Utilities ── */
+.eyebrow{font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.9rem;margin-bottom:1.4rem;}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);flex-shrink:0;}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,3.2vw,3rem);font-weight:700;line-height:1.15;max-width:680px;}
+.section-title em{font-style:italic;color:var(--c-light);}
+.section-header{margin-bottom:5rem;}
+.body-text{font-size:.97rem;color:var(--text-2);line-height:1.78;}
+.label-mono{font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem;}
+.label-mono::before{content:'';width:14px;height:1px;background:var(--text-3);}
+.block-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;}
+.block-label::before{content:'';width:14px;height:1px;background:var(--text-3);}
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
+.fade-in.visible{opacity:1;transform:none;}
+
+/* ── Shared section padding ── */
+.section-pad{padding:9rem 6rem;}
+.section-pad-surface{padding:9rem 6rem;background:var(--surface);}
+
+/* ── Hero ── */
+#hero{min-height:100vh;display:flex;flex-direction:column;padding-top:60px;position:relative;overflow:hidden;}
+#hero::before{content:'';position:absolute;top:0;right:0;width:55%;height:100%;background:linear-gradient(135deg,var(--surface) 0%,rgba(17,28,24,.8) 100%);z-index:0;}
+#hero::after{content:'';position:absolute;top:50%;right:8%;transform:translateY(-50%);width:380px;height:380px;border-radius:50%;border:1px solid rgba(45,158,107,.12);z-index:0;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;flex:1;position:relative;z-index:1;}
+.hero-left{padding:7rem 5rem 5rem 6rem;display:flex;flex-direction:column;justify-content:center;}
+.hero-module-tag{display:inline-flex;align-items:center;gap:.75rem;background:var(--c-subtle);border:1px solid var(--c-border);padding:.4rem 1rem .4rem .6rem;margin-bottom:2.5rem;width:fit-content;}
+.hero-module-badge{background:var(--c);color:#fff;font-family:var(--mono);font-size:.75rem;font-weight:600;padding:.2rem .55rem;letter-spacing:.05em;}
+.hero-module-text{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c-light);}
+.hero-title{font-family:var(--serif);font-size:clamp(2.8rem,4.2vw,5rem);font-weight:700;line-height:1.06;margin-bottom:1.4rem;}
+.hero-title em{font-style:italic;color:var(--c-light);}
+.hero-subtitle{font-size:1.05rem;color:var(--text-2);max-width:480px;line-height:1.78;margin-bottom:3rem;}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);border-left:1px solid var(--border);}
+.hero-stat{padding:1.4rem 1.6rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
+.hero-stat-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:.35rem;}
+.hero-stat-value{font-family:var(--serif);font-size:1.25rem;color:var(--c-light);font-weight:700;line-height:1.2;}
+.hero-right{display:flex;align-items:center;justify-content:center;padding:4rem;position:relative;}
+.agile-map{width:100%;max-width:380px;}
+.agile-map-title{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3);margin-bottom:1.8rem;text-align:center;}
+.agile-row{display:grid;grid-template-columns:48px 1fr;align-items:stretch;border:1px solid var(--border);margin-bottom:-1px;}
+.agile-row.active-c{border-color:var(--c);background:var(--c-subtle);z-index:1;position:relative;}
+.agile-row.done{opacity:.6;}
+.agile-letter{display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--text-3);padding:.8rem 0;}
+.agile-row.active-c .agile-letter{background:var(--c);border-color:var(--c);color:#fff;}
+.agile-row.done .agile-letter{color:var(--gold-dim);}
+.agile-info{padding:.9rem 1.2rem;}
+.agile-name{font-size:.82rem;font-weight:600;color:var(--text-2);}
+.agile-row.active-c .agile-name{color:var(--c-light);}
+.agile-verb{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
+.agile-row.active-c .agile-verb{color:var(--c);}
+.hero-bottom-bar{background:var(--surface);border-top:1px solid var(--border);padding:1.2rem 6rem;display:flex;align-items:center;gap:3rem;position:relative;z-index:1;}
+.bottom-bar-label{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);white-space:nowrap;flex-shrink:0;}
+.pill{padding:.28rem .85rem;border:1px solid var(--border);font-size:.7rem;color:var(--text-2);letter-spacing:.04em;}
+.bottom-bar-pills{display:flex;gap:.6rem;flex-wrap:wrap;}
+
+/* ── Insight / stats blocks ── */
+.insight-badges{display:grid;grid-template-columns:repeat(3,1fr);margin-top:5rem;border:1px solid var(--border);}
+.insight-badge{padding:2rem 2.2rem;border-right:1px solid var(--border);}
+.insight-badge:last-child{border-right:none;}
+.insight-badge-num{font-family:var(--serif);font-size:2.4rem;font-weight:700;color:var(--c-light);line-height:1;margin-bottom:.5rem;}
+.insight-badge-label{font-size:.88rem;color:var(--text-2);line-height:1.55;margin-bottom:.4rem;}
+.insight-badge-source{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
+
+/* ── Session banner ── */
+.session-banner{background:var(--surface-2);border:1px solid var(--border);border-left:3px solid var(--c);padding:1.6rem 2rem;display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:4rem;}
+.session-banner-tag{font-family:var(--mono);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--c-light);white-space:nowrap;padding-top:.15rem;}
+.session-banner-text{font-size:.9rem;color:var(--text-2);line-height:1.65;}
+.session-banner-text strong{color:var(--text-1);}
+
+/* ── Why strip ── */
+.why-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--surface-3);padding:2rem 6rem;display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center;}
+.why-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--c-light);white-space:nowrap;}
+.why-text{font-size:.92rem;color:var(--text-2);line-height:1.7;}
+.why-text strong{color:var(--text-1);}
+
+/* ── Insight strip ── */
+.insight-strip-3{padding:0 6rem 4rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.ic{padding:1.6rem 1.8rem;background:var(--surface-2);border:1px solid var(--border);border-top:2px solid var(--c);}
+.ic-num{font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--c-light);line-height:1;margin-bottom:.4rem;}
+.ic-text{font-size:.87rem;color:var(--text-2);line-height:1.6;margin-bottom:.4rem;}
+.ic-source{font-family:var(--mono);font-size:.53rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
+
+/* ── Quote card ── */
+.quote-card{padding:2rem 2.5rem;background:var(--surface-2);border:1px solid var(--border);border-left:3px solid var(--c-light);margin-top:1.5rem;}
+.quote-card p{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--text-1);line-height:1.65;}
+.quote-card-attr{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-top:.8rem;display:flex;align-items:center;gap:.6rem;}
+.quote-card-attr::before{content:'';width:14px;height:1px;background:var(--text-3);}
+
+/* ── Reflection card ── */
+.reflection-card{background:var(--gold-subtle);border:1px solid rgba(201,168,76,.2);padding:2rem 2.2rem;margin-top:1.5rem;}
+.reflection-icon{font-size:1.1rem;margin-bottom:.8rem;opacity:.8;}
+.reflection-q{font-family:var(--serif);font-size:1.1rem;font-style:italic;color:var(--text-1);line-height:1.6;}
+
+/* ── Outcome row ── */
+.outcome-row{display:flex;align-items:flex-start;gap:1.2rem;padding:.9rem 0;border-bottom:1px solid var(--border);}
+.outcome-row:last-child{border-bottom:none;}
+.outcome-dot{width:22px;height:22px;border:1px solid var(--c-border);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.15rem;}
+.outcome-dot-inner{width:6px;height:6px;background:var(--c);border-radius:50%;}
+.outcome-text{font-size:.92rem;color:var(--text-2);line-height:1.65;}
+
+/* ── Obj grid ── */
+.obj-grid{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);}
+.obj-cell{padding:2.6rem 2.3rem;border-right:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden;transition:background .25s;}
+.obj-cell:hover{background:var(--c-subtle);}
+.obj-cell:nth-child(3n){border-right:none;}
+.obj-cell:nth-child(4),.obj-cell:nth-child(5),.obj-cell:nth-child(6){border-bottom:none;}
+.obj-bg-num{position:absolute;top:.8rem;right:1rem;font-family:var(--serif);font-size:5rem;font-weight:900;opacity:.05;color:var(--c-light);line-height:1;pointer-events:none;}
+.obj-icon{width:38px;height:38px;background:var(--c-subtle);border:1px solid var(--c-border);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.95rem;margin-bottom:1.4rem;}
+.obj-num-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c-light);margin-bottom:.45rem;}
+.obj-title{font-family:var(--serif);font-size:1.05rem;font-weight:700;color:var(--c-light);margin-bottom:.8rem;line-height:1.25;}
+.obj-desc{font-size:.85rem;color:var(--text-2);line-height:1.68;margin-bottom:1rem;}
+.obj-tags{display:flex;flex-wrap:wrap;gap:.35rem;}
+.obj-tag{padding:.18rem .6rem;border:1px solid var(--border);font-size:.65rem;color:var(--text-3);}
+
+/* ── AGILE full blocks ── */
+.agile-full-blocks{border:1px solid var(--border);}
+.agile-full-row{display:grid;grid-template-columns:54px 1fr auto;align-items:center;padding:1.4rem 1.8rem;border-bottom:1px solid var(--border);gap:1.5rem;}
+.agile-full-row:last-child{border-bottom:none;}
+.agile-full-row.highlight-c{background:var(--c-subtle);border-color:var(--c-border);}
+.agile-full-letter{font-family:var(--serif);font-size:2rem;font-weight:700;text-align:center;color:var(--text-3);}
+.agile-full-row.highlight-c .agile-full-letter{color:var(--c-light);}
+.agile-full-row.done .agile-full-letter{color:var(--gold-dim);}
+.agile-full-info h4{font-size:.95rem;font-weight:600;color:var(--text-2);margin-bottom:.18rem;}
+.agile-full-row.highlight-c .agile-full-info h4{color:var(--text-1);}
+.agile-full-info p{font-size:.8rem;color:var(--text-3);line-height:1.5;}
+.agile-full-row.highlight-c .agile-full-info p{color:var(--text-2);}
+.agile-full-verb{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);white-space:nowrap;text-align:right;}
+.agile-full-row.highlight-c .agile-full-verb{color:var(--c-light);}
+.agile-full-row.done .agile-full-verb{color:var(--gold-dim);}
+
+/* ── Manifesto ── */
+#manifesto{padding:9rem 6rem;background:var(--bg);position:relative;overflow:hidden;}
+#manifesto::before{content:'"';position:absolute;top:-4rem;left:3rem;font-family:var(--serif);font-size:28rem;color:rgba(45,158,107,.04);line-height:1;pointer-events:none;}
+.manifesto-inner{max-width:900px;margin:0 auto;position:relative;}
+.manifesto-quote{font-family:var(--serif);font-size:clamp(1.7rem,2.8vw,2.5rem);font-weight:400;font-style:italic;line-height:1.5;color:var(--text-1);margin-bottom:2rem;}
+.manifesto-quote strong{font-weight:700;color:var(--c-light);font-style:normal;}
+.manifesto-attr{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);display:flex;align-items:center;gap:1rem;}
+.manifesto-attr::before{content:'';display:block;width:22px;height:1px;background:var(--text-3);}
+
+/* ══ COACHING MINDSET ══ */
+.contrast-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);margin-top:3rem;}
+.contrast-col{padding:2.5rem;}
+.contrast-col:first-child{border-right:1px solid var(--border);background:var(--red-s);}
+.contrast-col:last-child{background:var(--c-subtle);}
+.contrast-col-header{display:flex;align-items:center;gap:.8rem;margin-bottom:2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);}
+.contrast-col-icon{font-size:1.2rem;}
+.contrast-col-title{font-size:.95rem;font-weight:600;}
+.contrast-col:first-child .contrast-col-title{color:var(--red-l);}
+.contrast-col:last-child .contrast-col-title{color:var(--c-light);}
+.contrast-row{display:flex;align-items:flex-start;gap:.8rem;padding:.7rem 0;border-bottom:1px solid var(--border);}
+.contrast-row:last-child{border-bottom:none;}
+.contrast-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:.55rem;}
+.contrast-col:first-child .contrast-dot{background:var(--red);}
+.contrast-col:last-child .contrast-dot{background:var(--c);}
+.contrast-text{font-size:.88rem;color:var(--text-2);line-height:1.6;}
+
+/* Iceberg */
+.iceberg-wrap{margin-top:3rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.iceberg-visual{border:1px solid var(--border);}
+.iceberg-level{display:grid;grid-template-columns:90px 1fr;border-bottom:1px solid var(--border);transition:background .2s;}
+.iceberg-level:last-child{border-bottom:none;}
+.iceberg-level:hover{background:var(--c-subtle);}
+.iceberg-depth{display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;padding:.8rem;text-align:center;line-height:1.3;}
+.iceberg-info{padding:1rem 1.3rem;}
+.iceberg-name{font-size:.88rem;font-weight:600;margin-bottom:.18rem;}
+.iceberg-desc{font-size:.78rem;color:var(--text-2);line-height:1.5;}
+
+/* 70-20-10 */
+.learning-model{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);margin-top:3rem;}
+.lm-cell{padding:2rem 1.8rem;border-right:1px solid var(--border);text-align:center;}
+.lm-cell:last-child{border-right:none;}
+.lm-pct{font-family:var(--serif);font-size:3rem;font-weight:700;line-height:1;margin-bottom:.5rem;}
+.lm-name{font-size:.9rem;font-weight:600;margin-bottom:.8rem;}
+.lm-desc{font-size:.8rem;color:var(--text-2);line-height:1.6;}
+.lm-tag{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.7rem;padding:.25rem .6rem;border:1px solid;display:inline-block;}
+
+/* ══ ARTE DE PREGUNTAR ══ */
+.listen-levels{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);}
+.listen-level{display:grid;grid-template-columns:56px 1fr;border-bottom:1px solid var(--border);transition:background .2s;}
+.listen-level:last-child{border-bottom:none;}
+.listen-level:hover{background:var(--c-subtle);}
+.listen-num{display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);font-family:var(--serif);font-size:1.6rem;font-weight:700;}
+.listen-info{padding:1.2rem 1.5rem;}
+.listen-name{font-size:.92rem;font-weight:600;margin-bottom:.22rem;}
+.listen-desc{font-size:.8rem;color:var(--text-2);line-height:1.55;}
+.listen-cue{font-family:var(--mono);font-size:.57rem;letter-spacing:.08em;color:var(--text-3);margin-top:.3rem;font-style:italic;}
+
+/* Question bank */
+.q-filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.q-filter-btn{padding:.35rem 1rem;border:1px solid var(--border);background:none;color:var(--text-2);font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.q-filter-btn:hover{border-color:var(--c-border);color:var(--c-light);}
+.q-filter-btn.active{background:var(--c);border-color:var(--c);color:#fff;}
+.q-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.q-card{padding:1.5rem 1.6rem;background:var(--surface-2);border:1px solid var(--border);border-left:3px solid var(--c);transition:all .2s;cursor:default;}
+.q-card:hover{background:var(--c-subtle);border-color:var(--c-border);}
+.q-card.hidden{display:none;}
+.q-card-cat{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--c-light);margin-bottom:.5rem;}
+.q-card-text{font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--text-1);line-height:1.55;}
+
+/* Question taxonomy */
+.qtax-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem;}
+.qtax-cell{padding:2rem;background:var(--surface-2);border:1px solid var(--border);}
+.qtax-icon{font-size:1.3rem;margin-bottom:.8rem;}
+.qtax-name{font-size:.92rem;font-weight:600;margin-bottom:.4rem;}
+.qtax-desc{font-size:.82rem;color:var(--text-2);line-height:1.6;margin-bottom:.8rem;}
+.qtax-example{font-family:var(--serif);font-style:italic;font-size:.88rem;color:var(--text-3);border-left:2px solid var(--c);padding-left:.8rem;}
+
+/* ══ GROW FRAMEWORK ══ */
+.grow-visual{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);margin-top:3rem;}
+.grow-step{padding:2.5rem 2rem;border-right:1px solid var(--border);position:relative;overflow:hidden;transition:background .3s;}
+.grow-step:last-child{border-right:none;}
+.grow-step:hover{background:var(--c-subtle);}
+.grow-step-letter{font-family:var(--serif);font-size:5rem;font-weight:900;line-height:1;margin-bottom:.5rem;opacity:.25;}
+.grow-step:hover .grow-step-letter{opacity:.4;}
+.grow-step-name{font-size:1rem;font-weight:600;margin-bottom:.5rem;}
+.grow-step-full{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1rem;}
+.grow-step-desc{font-size:.83rem;color:var(--text-2);line-height:1.6;margin-bottom:1.2rem;}
+.grow-step-questions{display:flex;flex-direction:column;gap:.5rem;}
+.grow-q{font-family:var(--serif);font-style:italic;font-size:.82rem;color:var(--text-3);padding:.5rem .7rem;border:1px solid var(--border);line-height:1.45;transition:color .2s;}
+.grow-step:hover .grow-q{color:var(--text-2);}
+/* GROW colours */
+.gs-g .grow-step-letter,.gs-g .grow-step-name{color:var(--c-light);}
+.gs-g .grow-step-full{color:var(--c);}
+.gs-r .grow-step-letter,.gs-r .grow-step-name{color:var(--amber-l);}
+.gs-r .grow-step-full{color:var(--amber);}
+.gs-o .grow-step-letter,.gs-o .grow-step-name{color:var(--blue-l);}
+.gs-o .grow-step-full{color:var(--blue);}
+.gs-w .grow-step-letter,.gs-w .grow-step-name{color:var(--purple-l);}
+.gs-w .grow-step-full{color:var(--purple);}
+
+/* GROW flow diagram */
+.grow-flow{display:flex;align-items:center;gap:0;margin-top:3rem;border:1px solid var(--border);}
+.gf-step{flex:1;padding:1.4rem;text-align:center;border-right:1px solid var(--border);}
+.gf-step:last-child{border-right:none;}
+.gf-letter{font-family:var(--serif);font-size:1.8rem;font-weight:700;margin-bottom:.3rem;}
+.gf-name{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
+.gf-arrow{font-size:1.2rem;color:var(--text-3);flex-shrink:0;padding:.5rem;}
+
+/* GROW interactive simulator */
+.grow-sim{border:1px solid var(--c-border);background:var(--c-subtle);padding:2.5rem;margin-top:3rem;}
+.grow-sim-title{font-family:var(--mono);font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--c-light);margin-bottom:.5rem;}
+.grow-sim-subtitle{font-size:.88rem;color:var(--text-2);margin-bottom:2rem;}
+.grow-sim-tabs{display:flex;border-bottom:1px solid var(--c-border);margin-bottom:2rem;}
+.gsim-tab{padding:.7rem 1.4rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);cursor:pointer;border-bottom:2px solid transparent;background:none;border-top:none;border-left:none;border-right:none;transition:all .2s;margin-bottom:-1px;}
+.gsim-tab.active{color:var(--c-light);border-bottom-color:var(--c-light);}
+.gsim-panel{display:none;}
+.gsim-panel.active{display:block;}
+.gsim-scenario{font-size:.92rem;color:var(--text-2);line-height:1.7;margin-bottom:1.5rem;padding:1.2rem;background:var(--surface-2);border:1px solid var(--border);}
+.gsim-q-list{display:flex;flex-direction:column;gap:.7rem;}
+.gsim-q{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.2rem;background:var(--surface-2);border:1px solid var(--border);cursor:pointer;transition:all .2s;}
+.gsim-q:hover{border-color:var(--c-border);background:rgba(45,158,107,.05);}
+.gsim-q-phase{font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c-light);white-space:nowrap;padding-top:.15rem;flex-shrink:0;min-width:50px;}
+.gsim-q-text{font-family:var(--serif);font-style:italic;font-size:.93rem;color:var(--text-1);line-height:1.5;}
+
+/* ══ SBI FEEDBACK ══ */
+.sbi-visual{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);margin-top:3rem;}
+.sbi-cell{padding:2.5rem 2rem;border-right:1px solid var(--border);position:relative;overflow:hidden;}
+.sbi-cell:last-child{border-right:none;}
+.sbi-letter{font-family:var(--serif);font-size:4rem;font-weight:900;opacity:.15;position:absolute;top:.3rem;right:.8rem;line-height:1;}
+.sbi-icon{font-size:1.3rem;margin-bottom:.8rem;}
+.sbi-name{font-size:.92rem;font-weight:600;margin-bottom:.3rem;}
+.sbi-full{font-family:var(--mono);font-size:.57rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.8rem;}
+.sbi-desc{font-size:.83rem;color:var(--text-2);line-height:1.6;margin-bottom:.8rem;}
+.sbi-example{font-family:var(--serif);font-style:italic;font-size:.82rem;color:var(--text-3);border-left:2px solid;padding-left:.7rem;line-height:1.5;}
+
+/* Delegation matrix */
+.deleg-matrix{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);margin-top:3rem;}
+.dm-cell{padding:1.8rem 1.5rem;border-right:1px solid var(--border);position:relative;overflow:hidden;}
+.dm-cell:last-child{border-right:none;}
+.dm-level{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem;}
+.dm-title{font-size:.95rem;font-weight:600;margin-bottom:.4rem;}
+.dm-profile{font-size:.78rem;color:var(--text-2);margin-bottom:.6rem;}
+.dm-action{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .6rem;border:1px solid;display:inline-block;margin-top:.2rem;}
+
+/* ══ CINEMA ══ */
+#cinema{padding:9rem 6rem;background:var(--bg);position:relative;overflow:hidden;}
+#cinema::before{content:'▶';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:40rem;opacity:.015;pointer-events:none;color:var(--c-light);}
+.cinema-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem;}
+.cinema-card{background:var(--surface-2);border:1px solid var(--border);overflow:hidden;transition:all .3s;position:relative;}
+.cinema-card:hover{border-color:var(--c-border);transform:translateY(-4px);}
+.cinema-card-top{padding:2rem 2rem 1.5rem;position:relative;}
+.cinema-role-badge{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;padding:.22rem .65rem;border:1px solid;margin-bottom:1rem;display:inline-block;}
+.cinema-film{font-family:var(--serif);font-size:1.2rem;font-weight:700;margin-bottom:.3rem;line-height:1.25;}
+.cinema-year{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:1rem;}
+.cinema-coach-name{font-size:.85rem;font-weight:600;margin-bottom:.3rem;}
+.cinema-coach-desc{font-size:.8rem;color:var(--text-2);line-height:1.58;}
+.cinema-card-bottom{padding:1.5rem 2rem 2rem;border-top:1px solid var(--border);}
+.cinema-lesson-label{font-family:var(--mono);font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:.5rem;}
+.cinema-lesson{font-family:var(--serif);font-style:italic;font-size:.92rem;color:var(--text-1);line-height:1.55;margin-bottom:.8rem;}
+.cinema-apply{font-size:.8rem;color:var(--text-2);line-height:1.55;}
+.cinema-card-number{position:absolute;top:1.2rem;right:1.5rem;font-family:var(--serif);font-size:3rem;font-weight:900;opacity:.06;line-height:1;}
+
+/* ══ PROCESO DE COACHING ══ */
+.coaching-process{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);margin-top:3rem;}
+.cp-step{display:grid;grid-template-columns:80px 1fr;border-bottom:1px solid var(--border);transition:background .2s;}
+.cp-step:last-child{border-bottom:none;}
+.cp-step:hover{background:var(--c-subtle);}
+.cp-step-num{display:flex;align-items:flex-start;justify-content:center;border-right:1px solid var(--border);padding:2rem 0;position:relative;}
+.cp-step-badge{width:36px;height:36px;border-radius:50%;background:var(--c);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.75rem;font-weight:600;color:#fff;}
+.cp-step-body{padding:2rem 2.5rem;}
+.cp-step-phase{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c-light);margin-bottom:.4rem;}
+.cp-step-title{font-family:var(--serif);font-size:1.15rem;font-weight:700;margin-bottom:.6rem;}
+.cp-step-desc{font-size:.9rem;color:var(--text-2);line-height:1.7;margin-bottom:.8rem;}
+.cp-step-tools{display:flex;flex-wrap:wrap;gap:.4rem;}
+.cp-tool{padding:.2rem .65rem;border:1px solid var(--c-border);font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--c-light);}
+
+/* ══ DATOS & IMPACTO ══ */
+.data-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);margin-top:3rem;}
+.data-cell{padding:2rem 1.8rem;border-right:1px solid var(--border);text-align:center;}
+.data-cell:last-child{border-right:none;}
+.data-num{font-family:var(--serif);font-size:2.4rem;font-weight:700;line-height:1;margin-bottom:.4rem;}
+.data-label{font-size:.83rem;color:var(--text-2);line-height:1.5;margin-bottom:.3rem;}
+.data-source{font-family:var(--mono);font-size:.53rem;letter-spacing:.09em;text-transform:uppercase;color:var(--text-3);}
+
+/* ROI bar chart */
+.roi-bars{margin-top:3rem;border:1px solid var(--border);}
+.roi-bar-row{display:grid;grid-template-columns:220px 1fr 80px;align-items:center;padding:1rem 1.5rem;border-bottom:1px solid var(--border);gap:1.5rem;}
+.roi-bar-row:last-child{border-bottom:none;}
+.roi-bar-label{font-size:.88rem;color:var(--text-2);}
+.roi-bar-track{height:8px;background:var(--border);border-radius:4px;overflow:hidden;}
+.roi-bar-fill{height:100%;border-radius:4px;background:var(--c);}
+.roi-bar-val{font-family:var(--mono);font-size:.75rem;color:var(--c-light);text-align:right;}
+
+/* ══ CASES ══ */
+.cases-tabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:4rem;overflow-x:auto;}
+.cases-tab{padding:.9rem 1.8rem;font-family:var(--mono);font-size:.63rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;background:none;border-top:none;border-left:none;border-right:none;margin-bottom:-1px;white-space:nowrap;}
+.cases-tab.active{color:var(--c-light);border-bottom-color:var(--c-light);}
+.case-panel{display:none;}
+.case-panel.active{display:block;}
+.case-spread{display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start;}
+.case-meta-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:.5rem;}
+.case-title{font-family:var(--serif);font-size:1.5rem;font-weight:700;margin-bottom:1.2rem;line-height:1.25;}
+.case-tag{display:inline-block;padding:.25rem .85rem;border:1px solid var(--border);font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);margin-bottom:1.8rem;}
+.case-body-p{font-size:.9rem;color:var(--text-2);line-height:1.75;}
+.case-h4{font-family:var(--serif);font-size:1.05rem;margin-bottom:.8rem;margin-top:2rem;}
+.case-outcomes{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+.case-outcome{padding:1.3rem 1.5rem;background:var(--surface-2);border:1px solid var(--border);}
+.outcome-metric{font-family:var(--serif);font-size:1.7rem;color:var(--c-light);font-weight:700;margin-bottom:.2rem;}
+.outcome-label{font-size:.82rem;color:var(--text-2);line-height:1.45;}
+
+/* ══ DIAGNOSTIC ══ */
+.diagnostic-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;}
+.diag-slider{width:100%;height:2px;appearance:none;background:var(--border);outline:none;border-radius:1px;cursor:pointer;}
+.diag-slider::-webkit-slider-thumb{appearance:none;width:16px;height:16px;border-radius:50%;background:var(--c-light);border:2px solid var(--bg);box-shadow:0 0 0 1px var(--c-light);cursor:pointer;}
+.diag-slider::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--c-light);border:2px solid var(--bg);cursor:pointer;}
+.diag-item{margin-bottom:2.5rem;}
+.diag-item-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.9rem;}
+.diag-item-label{font-size:.93rem;font-weight:500;}
+.diag-item-value{font-family:var(--mono);font-size:.82rem;color:var(--c-light);}
+.diag-scale{display:flex;justify-content:space-between;margin-top:.4rem;}
+.diag-scale-label{font-family:var(--mono);font-size:.55rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);}
+.diagnostic-output{position:sticky;top:7rem;}
+.profile-synthesis{background:var(--surface-2);border:1px solid var(--border);padding:1.8rem;}
+.profile-synthesis-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text-3);margin-bottom:1.3rem;}
+.profile-dimension{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;padding:.65rem 0;border-bottom:1px solid var(--border);}
+.profile-dimension:last-child{border-bottom:none;}
+.profile-dim-name{font-size:.87rem;color:var(--text-2);}
+.profile-dim-score{font-family:var(--mono);font-size:.73rem;color:var(--c-light);}
+.profile-focus-area{margin-top:1.8rem;padding:1.3rem;background:var(--c-subtle);border-left:2px solid var(--c);}
+.profile-focus-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--c-light);margin-bottom:.4rem;}
+.profile-focus-text{font-size:.87rem;color:var(--text-2);line-height:1.65;}
+
+/* ══ LAB ══ */
+.lab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;margin-top:5rem;}
+.lab-card{background:var(--surface-2);border:1px solid var(--border);padding:2.5rem;position:relative;}
+.lab-card-bg-num{position:absolute;top:.8rem;right:1.2rem;font-family:var(--serif);font-size:4.5rem;font-weight:900;color:rgba(45,158,107,.05);line-height:1;}
+.lab-card-phase{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--c-light);margin-bottom:.4rem;}
+.lab-card-title{font-family:var(--serif);font-size:1.2rem;font-weight:600;margin-bottom:1.4rem;}
+.lab-card ul{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.lab-card ul li{font-size:.88rem;color:var(--text-2);padding-left:1.2rem;position:relative;line-height:1.55;}
+.lab-card ul li::before{content:'—';position:absolute;left:0;color:var(--text-3);}
+
+/* Commitment */
+.commitment-block{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border);margin-top:5rem;}
+.commitment-left{padding:3.5rem;border-right:1px solid var(--border);}
+.commitment-left h3{font-family:var(--serif);font-size:1.5rem;margin-bottom:1.2rem;}
+.commitment-left p{font-size:.9rem;color:var(--text-2);line-height:1.75;margin-bottom:1rem;}
+.commitment-right{padding:3.5rem;background:var(--surface-2);}
+.commitment-input-group{margin-bottom:1.8rem;}
+.commitment-input-label{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);margin-bottom:.6rem;display:block;}
+.commitment-input{width:100%;background:var(--surface-3);border:1px solid var(--border);padding:.85rem 1.1rem;color:var(--text-1);font-family:var(--sans);font-size:.9rem;outline:none;transition:border-color .2s;resize:none;}
+.commitment-input:focus{border-color:var(--c-border);}
+.commitment-input::placeholder{color:var(--text-3);}
+
+/* ══ SYNTHESIS ══ */
+#synthesis{padding:9rem 6rem;background:var(--surface);position:relative;overflow:hidden;}
+#synthesis::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;border-radius:50%;border:1px solid rgba(36,48,32,.6);pointer-events:none;}
+#synthesis::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:400px;height:400px;border-radius:50%;border:1px solid rgba(45,158,107,.06);pointer-events:none;}
+.synth-inner{position:relative;z-index:1;}
+.synth-header{text-align:center;margin-bottom:5rem;}
+.synth-header .eyebrow{justify-content:center;}
+.synth-header .section-title{text-align:center;max-width:none;}
+.synth-header p{font-size:.97rem;color:var(--text-2);max-width:560px;margin:1.5rem auto 0;line-height:1.75;}
+.synth-principles{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.synth-principle{padding:2.2rem;border:1px solid var(--border);background:var(--surface-2);display:flex;gap:1.6rem;align-items:flex-start;}
+.synth-icon{font-size:1.3rem;flex-shrink:0;margin-top:.15rem;}
+.synth-principle h4{font-family:var(--serif);font-size:1.05rem;font-weight:600;margin-bottom:.45rem;}
+.synth-principle p{font-size:.88rem;color:var(--text-2);line-height:1.65;}
+
+/* ══ ACCORDION ══ */
+.accordion{border:1px solid var(--border);}
+.accordion-item{border-bottom:1px solid var(--border);}
+.accordion-item:last-child{border-bottom:none;}
+.accordion-trigger{width:100%;padding:1.3rem 1.8rem;display:flex;justify-content:space-between;align-items:center;background:none;border:none;cursor:pointer;color:var(--text-1);text-align:left;transition:background .2s;}
+.accordion-trigger:hover{background:var(--surface-2);}
+.accordion-trigger-label{font-size:.92rem;font-weight:500;}
+.accordion-icon{font-size:1rem;color:var(--text-3);transition:transform .3s;flex-shrink:0;}
+.accordion-item.open .accordion-icon{transform:rotate(45deg);color:var(--c-light);}
+.accordion-body{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 1.8rem;}
+.accordion-item.open .accordion-body{max-height:700px;padding:0 1.8rem 1.8rem;}
+.accordion-body p{font-size:.9rem;color:var(--text-2);line-height:1.75;}
+
+/* ── Footer ── */
+footer{background:var(--surface);border-top:1px solid var(--border);padding:4.5rem 6rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.footer-brand{font-family:var(--serif);font-size:1.35rem;color:var(--c-light);margin-bottom:.8rem;}
+.footer-sub{font-size:.87rem;color:var(--text-2);line-height:1.65;max-width:380px;}
+.footer-nav{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;}
+.footer-nav a{font-size:.83rem;color:var(--text-2);text-decoration:none;padding:.35rem 0;transition:color .2s;}
+.footer-nav a:hover{color:var(--text-1);}
+.footer-bottom{padding:1.8rem 6rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);}
+
+/* ── Mobile responsive ── */
+@media(max-width:1100px){
+  nav ul{display:none;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .hero-left{padding:5rem 2.5rem;}
+  .contrast-grid,.iceberg-wrap,.diagnostic-grid,.commitment-block,.synth-principles,.case-spread{grid-template-columns:1fr;}
+  .grow-visual{grid-template-columns:1fr 1fr;}
+  .grow-step:nth-child(2n){border-right:none;}
+  .grow-step:nth-child(1),.grow-step:nth-child(2){border-bottom:1px solid var(--border);}
+  .cinema-grid{grid-template-columns:1fr 1fr;}
+  .deleg-matrix{grid-template-columns:1fr 1fr;}
+  .dm-cell:nth-child(2n){border-right:none;}
+  .dm-cell:nth-child(1),.dm-cell:nth-child(2){border-bottom:1px solid var(--border);}
+  .data-grid{grid-template-columns:1fr 1fr;}
+  .data-cell:nth-child(2n){border-right:none;}
+  .data-cell:nth-child(1),.data-cell:nth-child(2){border-bottom:1px solid var(--border);}
+  .q-grid{grid-template-columns:1fr;}
+  .qtax-grid{grid-template-columns:1fr;}
+  .sbi-visual{grid-template-columns:1fr;}
+  .sbi-cell{border-right:none!important;border-bottom:1px solid var(--border);}
+  .sbi-cell:last-child{border-bottom:none;}
+  .learning-model{grid-template-columns:1fr;}
+  .lm-cell{border-right:none;border-bottom:1px solid var(--border);}
+  .lm-cell:last-child{border-bottom:none;}
+  .insight-badges,.lab-grid{grid-template-columns:1fr 1fr;}
+  .insight-badge:nth-child(2n){border-right:none;}
+  section,.section-pad,.section-pad-surface,#cinema,#synthesis,#manifesto,footer{padding-left:2.5rem!important;padding-right:2.5rem!important;}
+  .why-strip,.insight-strip-3{padding-left:2.5rem!important;padding-right:2.5rem!important;}
+  .commitment-left,.commitment-right{border-right:none!important;}
+  .commitment-left{border-bottom:1px solid var(--border);}
+  .obj-grid{grid-template-columns:1fr 1fr;}
+  .obj-cell:nth-child(2n){border-right:none;}
+}
+@media(max-width:700px){
+  section,.section-pad,.section-pad-surface,#cinema,#synthesis,#manifesto,footer{padding-left:1.4rem!important;padding-right:1.4rem!important;padding-top:5rem!important;padding-bottom:5rem!important;}
+  .why-strip,.insight-strip-3{padding-left:1.4rem!important;padding-right:1.4rem!important;}
+  .hero-left{padding:4rem 1.4rem 3rem;}
+  .hero-stats{grid-template-columns:1fr 1fr;}
+  .hero-title{font-size:2.4rem;}
+  nav{padding:0 1.4rem;}
+  .nav-brand-label{font-size:.7rem;}
+  .grow-visual,.cinema-grid,.deleg-matrix,.data-grid,.obj-grid,.insight-badges,.lab-grid,.case-outcomes,.qtax-grid{grid-template-columns:1fr!important;}
+  .grow-step,.cinema-card,.dm-cell,.data-cell,.obj-cell,.insight-badge,.lm-cell{border-right:none!important;border-bottom:1px solid var(--border)!important;}
+  .grow-step:last-child,.cinema-card:last-child,.dm-cell:last-child,.data-cell:last-child,.obj-cell:last-child,.insight-badge:last-child,.lm-cell:last-child{border-bottom:none!important;}
+  .case-spread{grid-template-columns:1fr;}
+  .commitment-block{display:flex;flex-direction:column;}
+  .commitment-left,.commitment-right{padding:2rem 1.4rem!important;}
+  .synth-principles{display:flex;flex-direction:column;}
+  .section-header{margin-bottom:3rem;}
+  .section-title{font-size:1.85rem;}
+  .manifesto-quote{font-size:1.4rem;}
+  .grow-flow{flex-wrap:wrap;}
+  .roi-bar-row{grid-template-columns:140px 1fr 60px;}
+  .q-grid{grid-template-columns:1fr;}
+  .hero-bottom-bar{padding:1.2rem 1.4rem;gap:1rem;flex-wrap:wrap;}
+  .footer-bottom{padding:1.4rem!important;flex-direction:column;gap:.5rem;text-align:center;}
+  footer{display:flex!important;flex-direction:column;padding:3rem 1.4rem!important;}
+  .footer-nav{grid-template-columns:1fr 1fr;}
+  .cases-tabs{flex-wrap:nowrap;}
+  .grow-sim-tabs{flex-wrap:wrap;}
+  .diagnostic-output{position:static;}
+  .lab-grid,.insight-strip-3{display:flex!important;flex-direction:column!important;}
+  .why-strip{grid-template-columns:1fr;gap:1rem;}
+  .agile-full-row{grid-template-columns:46px 1fr;gap:1rem;}
+  .agile-full-verb{display:none;}
+}
+</style>
+</head>
+<body>
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-agile-pills">
+      <div class="nav-pill done">A</div>
+      <div class="nav-pill done">B</div>
+      <div class="nav-pill active-c">C</div>
+      <div class="nav-pill">D</div>
+      <div class="nav-pill">E</div>
+    </div>
+    <div class="nav-brand-label">AGILE Leadership Excellence — Module C</div>
+  </div>
+  <ul>
+    <li><a href="#course-intro">Intro</a></li>
+    <li><a href="#mindset">Mindset</a></li>
+    <li><a href="#preguntar">Questions</a></li>
+    <li><a href="#grow">GROW</a></li>
+    <li><a href="#feedback">Feedback</a></li>
+    <li><a href="#cinema">Cinema</a></li>
+    <li><a href="#proceso">Process</a></li>
+    <li><a href="#datos">Data</a></li>
+    <li><a href="#cases">Cases</a></li>
+    <li><a href="#diagnostic">Diagnostic</a></li>
+    <li><a href="#lab">Lab</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-module-tag">
+        <div class="hero-module-badge">C</div>
+        <div class="hero-module-text">AGILE Leadership Excellence · Module C of 5</div>
+      </div>
+      <h1 class="hero-title">Coaching<br><em>Leadership</em></h1>
+      <p class="hero-subtitle">The most powerful shift a senior leader can make is to stop being the person who solves problems and become the person who develops the people who solve problems. Coaching is not a soft skill — it is the strategic architecture of organizational capacity.</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-label">Core Sessions</div><div class="hero-stat-value">2</div></div>
+        <div class="hero-stat"><div class="hero-stat-label">Star Framework</div><div class="hero-stat-value" style="font-size:.85rem;">GROW Model<br>+ Powerful Questions</div></div>
+        <div class="hero-stat"><div class="hero-stat-label">Unique Feature</div><div class="hero-stat-value" style="font-size:.85rem;">Coaching<br>in Cinema</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div style="position:absolute;top:1.5rem;right:1.5rem;font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-3);border:1px solid var(--border);padding:.3rem .7rem;">Leadership Excellence Series</div>
+      <div class="agile-map">
+        <div class="agile-map-title">AGILE Framework — Programme Overview</div>
+        <div class="agile-row done"><div class="agile-letter" style="color:var(--gold-dim);">A</div><div class="agile-info"><div class="agile-name" style="color:var(--text-3);">Adaptability</div><div class="agile-verb">Completed · Module A</div></div></div>
+        <div class="agile-row done"><div class="agile-letter" style="color:var(--gold-dim);">B</div><div class="agile-info"><div class="agile-name" style="color:var(--text-3);">Belonging & Collaboration</div><div class="agile-verb">Completed · Module B</div></div></div>
+        <div class="agile-row active-c"><div class="agile-letter">C</div><div class="agile-info"><div class="agile-name">Coaching Leadership</div><div class="agile-verb">Active · This Module</div></div></div>
+        <div class="agile-row"><div class="agile-letter">D</div><div class="agile-info"><div class="agile-name">Delegation & Empowerment</div><div class="agile-verb">Distribute Authority · Grow Capability</div></div></div>
+        <div class="agile-row"><div class="agile-letter">E</div><div class="agile-info"><div class="agile-name">Execution Excellence</div><div class="agile-verb">Focus · Prioritize · Deliver at Scale</div></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bottom-bar">
+    <div class="bottom-bar-label">Key Topics</div>
+    <div class="bottom-bar-pills">
+      <div class="pill">GROW Model</div><div class="pill">Powerful Questions</div><div class="pill">Active Listening</div><div class="pill">SBI Feedback</div><div class="pill">70-20-10</div><div class="pill">Iceberg Model</div><div class="pill">Coaching Triads</div><div class="pill">Delegation Intelligence</div><div class="pill">Coaching in Cinema</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COURSE INTRO ═══ -->
+<section id="course-intro" class="section-pad-surface">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:start;" class="fade-in">
+    <div>
+      <div class="eyebrow">Course Introduction</div>
+      <h2 class="section-title"><em>Coaching Leadership</em></h2>
+      <div style="margin-top:2.5rem;">
+        <p class="body-text">Most organizations invest heavily in technical and strategic capability — but the leaders who create the most lasting organizational impact do something different: they systematically develop the thinking, confidence, and initiative of every person around them. This is coaching leadership.</p>
+        <p class="body-text" style="margin-top:1rem;">Module C equips senior leaders with the mindset, methodology, and practical tools to lead through coaching rather than directing. You will leave with a complete coaching conversation framework, a personal questioning toolkit, and a clear process for developing others — applicable immediately in every one-to-one interaction.</p>
+      </div>
+      <div style="margin-top:3rem;border-top:1px solid var(--border);padding-top:2.5rem;">
+        <div class="label-mono" style="margin-bottom:1.5rem;">Programme Outcomes</div>
+        <div class="outcome-row"><div class="outcome-dot"><div class="outcome-dot-inner"></div></div><p class="outcome-text">Shift from solving mode to developing mode — becoming a leader who builds thinking capacity in others</p></div>
+        <div class="outcome-row"><div class="outcome-dot"><div class="outcome-dot-inner"></div></div><p class="outcome-text">Master the GROW coaching framework and deploy it confidently in real leadership conversations</p></div>
+        <div class="outcome-row"><div class="outcome-dot"><div class="outcome-dot-inner"></div></div><p class="outcome-text">Develop the art of powerful questioning — knowing which question to ask, when, and why</p></div>
+        <div class="outcome-row"><div class="outcome-dot"><div class="outcome-dot-inner"></div></div><p class="outcome-text">Deliver structured, high-quality feedback using the SBI Model that drives behavioral change</p></div>
+        <div class="outcome-row"><div class="outcome-dot"><div class="outcome-dot-inner"></div></div><p class="outcome-text">Design a personal coaching practice and team development protocol applicable immediately at stc</p></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);margin-bottom:1.5rem;">Session Map — Module C</div>
+      <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border);">
+        <div style="display:grid;grid-template-columns:56px 1fr;border-bottom:1px solid var(--border);background:var(--c-subtle);border-left:2px solid var(--c);">
+          <div style="display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);padding:1.5rem 0;font-family:var(--mono);font-size:.68rem;color:var(--c-light);">S9</div>
+          <div style="padding:1.4rem 1.6rem;"><div style="font-size:.88rem;font-weight:600;margin-bottom:.2rem;">Coaching Leadership: Developing Leaders Who Develop Others</div><div style="font-size:.76rem;color:var(--text-3);">Leader-as-Coach · GROW Framework · Coaching Triads Activity</div></div>
+        </div>
+        <div style="display:grid;grid-template-columns:56px 1fr;background:var(--c-subtle);border-left:2px solid var(--c);">
+          <div style="display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);padding:1.5rem 0;font-family:var(--mono);font-size:.68rem;color:var(--c-light);">S10</div>
+          <div style="padding:1.4rem 1.6rem;"><div style="font-size:.88rem;font-weight:600;margin-bottom:.2rem;">Delegating for Organizational Agility</div><div style="font-size:.76rem;color:var(--text-3);">Advanced Delegation Frameworks · Leadership Capacity Building</div></div>
+        </div>
+      </div>
+      <div class="quote-card" style="margin-top:2rem;">
+        <p>"The role of a leader is not to have all the ideas. It is to create a culture where everyone can have ideas — and feel safe enough to share them, develop them, and act on them."</p>
+        <div class="quote-card-attr">Module C — Core Leadership Premise</div>
+      </div>
+      <div style="margin-top:2rem;border:1px solid var(--border);background:var(--surface-2);padding:1.8rem;">
+        <div class="label-mono" style="margin-bottom:1.2rem;">What You Build in This Module</div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+          <span style="padding:.28rem .8rem;background:var(--c-subtle);border:1px solid var(--c-border);font-size:.72rem;color:var(--c-light);">Coaching Conversation Skills</span>
+          <span style="padding:.28rem .8rem;background:var(--c-subtle);border:1px solid var(--c-border);font-size:.72rem;color:var(--c-light);">GROW Mastery</span>
+          <span style="padding:.28rem .8rem;background:var(--c-subtle);border:1px solid var(--c-border);font-size:.72rem;color:var(--c-light);">Question Toolkit</span>
+          <span style="padding:.28rem .8rem;background:var(--c-subtle);border:1px solid var(--c-border);font-size:.72rem;color:var(--c-light);">Feedback Architecture</span>
+          <span style="padding:.28rem .8rem;background:var(--c-subtle);border:1px solid var(--c-border);font-size:.72rem;color:var(--c-light);">Personal Coaching Protocol</span>
+          <span style="padding:.28rem .8rem;background:var(--c-subtle);border:1px solid var(--c-border);font-size:.72rem;color:var(--c-light);">Team Development Plan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LEARNING OBJECTIVES ═══ -->
+<section id="learning-objectives" class="section-pad fade-in">
+  <div class="section-header">
+    <div class="eyebrow">Module C — Learning Objectives</div>
+    <h2 class="section-title">What You Will<br><em>Master Here</em></h2>
+  </div>
+  <div class="obj-grid">
+    <div class="obj-cell"><div class="obj-bg-num">1</div><div class="obj-icon">🔄</div><div class="obj-num-label">Objective 1</div><div class="obj-title">Make the Coaching Shift</div><p class="obj-desc">Transition from a directive, problem-solving leadership style to a coaching mindset that builds initiative, autonomy, and thinking capacity in others.</p><div class="obj-tags"><span class="obj-tag">Leader-as-Coach</span><span class="obj-tag">Iceberg Model</span><span class="obj-tag">70-20-10</span></div></div>
+    <div class="obj-cell"><div class="obj-bg-num">2</div><div class="obj-icon">👂</div><div class="obj-num-label">Objective 2</div><div class="obj-title">Master Active Listening</div><p class="obj-desc">Develop level-3 listening capability — hearing not just words, but meaning, emotion, and what is left unsaid. The foundation of every effective coaching conversation.</p><div class="obj-tags"><span class="obj-tag">Listening Levels</span><span class="obj-tag">Presence</span><span class="obj-tag">Curiosity</span></div></div>
+    <div class="obj-cell"><div class="obj-bg-num">3</div><div class="obj-icon">❓</div><div class="obj-num-label">Objective 3</div><div class="obj-title">The Art of Powerful Questions</div><p class="obj-desc">Build a personal toolkit of catalytic questions that stimulate autonomy, challenge assumptions, unlock insight, and accelerate the development of others.</p><div class="obj-tags"><span class="obj-tag">Question Taxonomy</span><span class="obj-tag">Socratic Method</span><span class="obj-tag">30-Question Bank</span></div></div>
+    <div class="obj-cell"><div class="obj-bg-num">4</div><div class="obj-icon">🌱</div><div class="obj-num-label">Objective 4</div><div class="obj-title">Deploy the GROW Framework</div><p class="obj-desc">Apply Whitmore's GROW model to structure every developmental conversation — from one-to-ones to team reviews — with a consistent architecture that drives results.</p><div class="obj-tags"><span class="obj-tag">GROW Model</span><span class="obj-tag">Goal · Reality · Options · Will</span></div></div>
+    <div class="obj-cell"><div class="obj-bg-num">5</div><div class="obj-icon">💬</div><div class="obj-num-label">Objective 5</div><div class="obj-title">Give High-Quality Feedback</div><p class="obj-desc">Deliver specific, behaviorally-anchored feedback using the SBI Model that changes behavior without damaging trust or motivation.</p><div class="obj-tags"><span class="obj-tag">SBI Feedback</span><span class="obj-tag">Developmental Conversations</span></div></div>
+    <div class="obj-cell" style="background:var(--c-subtle);"><div class="obj-bg-num">6</div><div class="obj-icon" style="background:var(--c-subtle);border-color:var(--c-border);">🎯</div><div class="obj-num-label">Objective 6</div><div class="obj-title">Build Your Coaching Practice</div><p class="obj-desc">Create a personal 5-step coaching protocol and a team development plan you can deploy immediately — turning coaching from a workshop concept into a daily leadership habit.</p><div class="obj-tags"><span class="obj-tag">Personal Protocol</span><span class="obj-tag">Team Plan</span><span class="obj-tag">90-Day Lab</span></div></div>
+  </div>
+</section>
+
+<!-- ═══ AGILE FRAMEWORK ═══ -->
+<section class="section-pad-surface fade-in">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:start;">
+    <div>
+      <div class="eyebrow">The AGILE Framework</div>
+      <h2 class="section-title">Five Pillars of<br><em>Leadership Excellence</em></h2>
+      <p class="body-text" style="margin-top:2.5rem;">Coaching Leadership is the third pillar of the AGILE Framework — and the one that most powerfully multiplies the impact of everything else. A leader who coaches transforms individual capability into organizational capacity, turning good team members into great ones and preparing the next generation of leaders.</p>
+      <div class="quote-card">
+        <p>"A coaching leader doesn't just develop capability — they develop <strong style="font-style:normal;color:var(--c-light);">developers of capability</strong>. That is the difference between linear and exponential organizational growth."</p>
+        <div class="quote-card-attr">Module C — AGILE Integration Principle</div>
+      </div>
+    </div>
+    <div>
+      <div class="agile-full-blocks">
+        <div class="agile-full-row done"><div class="agile-full-letter">A</div><div class="agile-full-info"><h4>Adaptability</h4><p>Anticipating disruption, responding decisively, continuous innovation.</p></div><div class="agile-full-verb">Module A · Done</div></div>
+        <div class="agile-full-row done"><div class="agile-full-letter" style="color:var(--gold-dim);">B</div><div class="agile-full-info"><h4>Belonging & Collaboration</h4><p>Trust, influence, Belbin roles, shared accountability.</p></div><div class="agile-full-verb">Module B · Done</div></div>
+        <div class="agile-full-row highlight-c"><div class="agile-full-letter">C</div><div class="agile-full-info"><h4>Coaching Leadership — This Module</h4><p>Enable autonomy, powerful conversations, build talent depth.</p></div><div class="agile-full-verb">Module C · Active</div></div>
+        <div class="agile-full-row"><div class="agile-full-letter">D</div><div class="agile-full-info"><h4>Delegation & Empowerment</h4><p>Distribute authority, grow capability across teams.</p></div><div class="agile-full-verb">Module D</div></div>
+        <div class="agile-full-row"><div class="agile-full-letter">E</div><div class="agile-full-info"><h4>Execution Excellence</h4><p>Focus, prioritize, deliver outcomes at scale.</p></div><div class="agile-full-verb">Module E</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MANIFESTO ═══ -->
+<section id="manifesto">
+  <div class="manifesto-inner fade-in">
+    <p class="manifesto-quote">The greatest leaders are not those who give the best answers — they are those who ask the <strong>questions that change everything</strong>. Questions that make people think differently, see more, and become more than they thought they could be.</p>
+    <div class="manifesto-attr">Module C — The Coaching Leader's Credo</div>
+    <div class="insight-badges">
+      <div class="insight-badge"><div class="insight-badge-num">788%</div><div class="insight-badge-label">Average ROI on professional coaching programs in organizational settings, making it one of the highest-return leadership investments available.</div><div class="insight-badge-source">ICF / Manchester Consulting Group</div></div>
+      <div class="insight-badge"><div class="insight-badge-num">70%</div><div class="insight-badge-label">of learning and development in high-performing professionals comes from on-the-job experience — directly shaped by the quality of coaching they receive from their leader.</div><div class="insight-badge-source">70-20-10 Research — Lombardo & Eichinger</div></div>
+      <div class="insight-badge"><div class="insight-badge-num">4×</div><div class="insight-badge-label">Employees with leaders who coach regularly are 4× more likely to be highly engaged — and engaged teams produce 21% higher profitability.</div><div class="insight-badge-source">Gallup State of the Global Workplace</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COACHING MINDSET ═══ -->
+<section id="mindset" class="section-pad">
+  <div class="section-header fade-in">
+    <div class="eyebrow">Session 9 · Foundation</div>
+    <h2 class="section-title">The Coaching<br><em>Mindset Shift</em></h2>
+  </div>
+  <div class="session-banner fade-in">
+    <div class="session-banner-tag">S9 · Core</div>
+    <p class="session-banner-text"><strong>The Fundamental Shift:</strong> Traditional leaders are trained to be the expert — to solve, decide, and direct. Coaching leaders develop a radically different instinct: when someone brings them a problem, they ask rather than tell. This is not inefficiency — it is the most powerful multiplier of organizational capability available to a senior leader.</p>
+  </div>
+
+  <!-- Leader vs Coach contrast -->
+  <div class="contrast-grid fade-in">
+    <div class="contrast-col">
+      <div class="contrast-col-header"><div class="contrast-col-icon">⚡</div><div class="contrast-col-title">Traditional Leadership Mode — Solving</div></div>
+      <div class="contrast-row"><div class="contrast-dot"></div><div class="contrast-text">"Here's what I think you should do..." — provides the answer</div></div>
+      <div class="contrast-row"><div class="contrast-dot"></div><div class="contrast-text">Focused on the problem — drives for quick resolution</div></div>
+      <div class="contrast-row"><div class="contrast-dot"></div><div class="contrast-text">Creates dependency — team brings problems, leader solves them</div></div>
+      <div class="contrast-row"><div class="contrast-dot"></div><div class="contrast-text">Builds leader's authority — diminishes team's initiative</div></div>
+      <div class="contrast-row"><div class="contrast-dot"></div><div class="contrast-text">Scales linearly with the leader's time and bandwidth</div></div>
+      <div class="contrast-row"><div class="contrast-dot"></div><div class="contrast-text">Tells: "The answer is X. Make sure you do Y by Friday."</div></div>
+    </div>
+    <div class="contrast-col">
+      <div class="contrast-col-header"><div class="contrast-col-icon">🌱</div><div class="contrast-col-title">Coaching Leadership Mode — Enabling</div></div>
+      <div class="contrast-row"><div class="contrast-dot"></div><div class="contrast-text">"What options have you already considered?" — unlocks thinking</div></div>
+      <div class="contrast-row"><div class="contrast-dot"></div><div class="contrast-text">Focused on the person — develops capability for next time</div></div>
+      <div class="contrast-row"><div class="contrast-dot"></div><div class="contrast-text">Creates autonomy — team develops the capacity to solve their own problems</div></div>
+      <div class="contrast-row"><div class="contrast-dot"></div><div class="contrast-text">Builds team's authority — amplifies organizational intelligence</div></div>
+      <div class="contrast-row"><div class="contrast-dot"></div><div class="contrast-text">Scales exponentially — the leader's impact multiplies through others</div></div>
+      <div class="contrast-row"><div class="contrast-dot"></div><div class="contrast-text">Asks: "What would success look like? What would you do if you knew?"</div></div>
+    </div>
+  </div>
+
+  <!-- Iceberg + 70-20-10 -->
+  <div class="iceberg-wrap fade-in">
+    <div>
+      <div class="label-mono" style="margin-bottom:1.5rem;">The Coaching Iceberg — Nancy Kline / Iceberg Model</div>
+      <div class="iceberg-visual">
+        <div class="iceberg-level" style="background:rgba(45,158,107,.12);border-top:2px solid var(--c);">
+          <div class="iceberg-depth" style="color:var(--c-light);">Surface<br>Visible</div>
+          <div class="iceberg-info"><div class="iceberg-name" style="color:var(--c-light);">Behavior & Performance</div><div class="iceberg-desc">What people do, say, and deliver. The only level traditional management addresses.</div></div>
+        </div>
+        <div class="iceberg-level" style="background:rgba(74,130,201,.08);">
+          <div class="iceberg-depth" style="color:var(--blue-l);">Below<br>Surface</div>
+          <div class="iceberg-info"><div class="iceberg-name" style="color:var(--blue-l);">Skills & Capabilities</div><div class="iceberg-desc">What people know how to do — technical, interpersonal, leadership capabilities.</div></div>
+        </div>
+        <div class="iceberg-level" style="background:rgba(212,133,74,.08);">
+          <div class="iceberg-depth" style="color:var(--amber-l);">Deeper<br>Layer</div>
+          <div class="iceberg-info"><div class="iceberg-name" style="color:var(--amber-l);">Mindset & Beliefs</div><div class="iceberg-desc">What people believe about themselves, others, and what is possible. Coaching unlocks this level.</div></div>
+        </div>
+        <div class="iceberg-level" style="background:rgba(138,93,201,.08);">
+          <div class="iceberg-depth" style="color:var(--purple-l);">Deepest<br>Core</div>
+          <div class="iceberg-info"><div class="iceberg-name" style="color:var(--purple-l);">Identity & Purpose</div><div class="iceberg-desc">"Who am I as a professional and a leader?" Transformational coaching works here.</div></div>
+        </div>
+      </div>
+      <div style="margin-top:.8rem;font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-3);">Traditional management addresses only the surface. Coaching accesses all four layers.</div>
+    </div>
+    <div>
+      <div class="label-mono" style="margin-bottom:1.5rem;">70-20-10 Learning Model — Lombardo & Eichinger</div>
+      <div class="learning-model">
+        <div class="lm-cell" style="background:rgba(45,158,107,.08);border-top:2px solid var(--c);">
+          <div class="lm-pct" style="color:var(--c-light);">70%</div>
+          <div class="lm-name" style="color:var(--c-light);">On-the-Job Experience</div>
+          <div class="lm-desc">Real challenges, stretch assignments, and learning from experience. This is where coaching has its greatest impact — the leader shapes HOW people process and learn from experience.</div>
+          <div class="lm-tag" style="color:var(--c);border-color:var(--c-border);">Coaching impact: HIGH</div>
+        </div>
+        <div class="lm-cell" style="background:rgba(74,130,201,.06);">
+          <div class="lm-pct" style="color:var(--blue-l);">20%</div>
+          <div class="lm-name" style="color:var(--blue-l);">Learning from Others</div>
+          <div class="lm-desc">Feedback, mentoring, observing role models, peer learning. The coaching leader is the primary architect of this 20% — through 1:1s, feedback, and developmental conversations.</div>
+          <div class="lm-tag" style="color:var(--blue);border-color:rgba(74,130,201,.3);">Coaching impact: HIGH</div>
+        </div>
+        <div class="lm-cell" style="background:rgba(212,133,74,.05);">
+          <div class="lm-pct" style="color:var(--amber-l);">10%</div>
+          <div class="lm-name" style="color:var(--amber-l);">Formal Training</div>
+          <div class="lm-desc">Courses, workshops, programmes like this one. Essential foundation — but only 10% of actual development. The other 90% depends on the quality of coaching that follows.</div>
+          <div class="lm-tag" style="color:var(--amber);border-color:rgba(212,133,74,.3);">Coaching impact: MEDIUM</div>
+        </div>
+      </div>
+      <div class="reflection-card">
+        <div class="reflection-icon">🌱</div>
+        <p class="reflection-q">"If 90% of your team's development happens through experience and learning from you — what is the quality of the coaching you are currently providing in every interaction?"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ARTE DE PREGUNTAR ═══ -->
+<section id="preguntar" class="section-pad-surface">
+  <div class="section-header fade-in">
+    <div class="eyebrow">Session 9 · Core Capability</div>
+    <h2 class="section-title">The Art of<br><em>Powerful Questions</em></h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6rem;" class="fade-in">
+    <div>
+      <div class="label-mono" style="margin-bottom:1.5rem;">The 3 Levels of Listening — Co-Active Coaching / Whitworth</div>
+      <div class="listen-levels">
+        <div class="listen-level" style="background:rgba(201,74,74,.05);">
+          <div class="listen-num" style="color:var(--red-l);">1</div>
+          <div class="listen-info">
+            <div class="listen-name" style="color:var(--red-l);">Internal Listening</div>
+            <div class="listen-desc">Listening through your own filter — planning what to say next, relating to your own experience, judging. This is where most people naturally listen.</div>
+            <div class="listen-cue">⚠ "I'm thinking about what to say when they finish..."</div>
+          </div>
+        </div>
+        <div class="listen-level" style="background:rgba(74,130,201,.06);">
+          <div class="listen-num" style="color:var(--blue-l);">2</div>
+          <div class="listen-info">
+            <div class="listen-name" style="color:var(--blue-l);">Focused Listening</div>
+            <div class="listen-desc">Fully focused on the other person — their words, meaning, and emotional state. You notice what they say and how they say it. Coaches operate here as a minimum.</div>
+            <div class="listen-cue">✓ "I'm fully present with what they are telling me."</div>
+          </div>
+        </div>
+        <div class="listen-level" style="background:var(--c-subtle);border-left:2px solid var(--c);">
+          <div class="listen-num" style="color:var(--c-light);">3</div>
+          <div class="listen-info">
+            <div class="listen-name" style="color:var(--c-light);">Global Listening ★</div>
+            <div class="listen-desc">Listening to everything — words, tone, pace, body language, silence, energy, and what is NOT being said. The master coaching level. Picks up the subtle signals that reveal the real issue.</div>
+            <div class="listen-cue">★ "I notice you said 'we should' but your energy dropped when you said it."</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:3rem;">
+        <div class="label-mono" style="margin-bottom:1.5rem;">Question Taxonomy — From Surface to Transformational</div>
+        <div class="qtax-grid">
+          <div class="qtax-cell">
+            <div class="qtax-icon">🔍</div>
+            <div class="qtax-name" style="color:var(--c-light);">Clarifying Questions</div>
+            <div class="qtax-desc">Surface the specifics. Transform vague statements into precise, workable realities.</div>
+            <div class="qtax-example">"When you say 'the team isn't engaged' — what specifically are you observing?"</div>
+          </div>
+          <div class="qtax-cell">
+            <div class="qtax-icon">🔭</div>
+            <div class="qtax-name" style="color:var(--amber-l);">Perspective Questions</div>
+            <div class="qtax-desc">Shift the view. Unlock insight by changing the angle of observation.</div>
+            <div class="qtax-example">"If your best team member were watching this situation — what would they notice?"</div>
+          </div>
+          <div class="qtax-cell">
+            <div class="qtax-icon">⚡</div>
+            <div class="qtax-name" style="color:var(--blue-l);">Challenge Questions</div>
+            <div class="qtax-desc">Disrupt assumptions. Surface limiting beliefs that are blocking progress.</div>
+            <div class="qtax-example">"What would you do if you knew you couldn't fail?"</div>
+          </div>
+          <div class="qtax-cell">
+            <div class="qtax-icon">🌟</div>
+            <div class="qtax-name" style="color:var(--purple-l);">Generative Questions</div>
+            <div class="qtax-desc">Create new possibility. Move from problem-focus to solution-creation.</div>
+            <div class="qtax-example">"Imagine this is fully resolved — what does that future look like for you?"</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="label-mono" style="margin-bottom:1.2rem;">Bank of 30 Powerful Questions — Filter by Context</div>
+      <div class="q-filter-bar">
+        <button class="q-filter-btn active" onclick="filterQ(this,'all')">All</button>
+        <button class="q-filter-btn" onclick="filterQ(this,'goal')">Goal</button>
+        <button class="q-filter-btn" onclick="filterQ(this,'blocker')">Blocker</button>
+        <button class="q-filter-btn" onclick="filterQ(this,'feedback')">Feedback</button>
+        <button class="q-filter-btn" onclick="filterQ(this,'vision')">Vision</button>
+        <button class="q-filter-btn" onclick="filterQ(this,'challenge')">Challenge</button>
+        <button class="q-filter-btn" onclick="filterQ(this,'accountability')">Accountability</button>
+      </div>
+      <div class="q-grid" id="q-bank">
+        <div class="q-card" data-cat="goal"><div class="q-card-cat">Goal</div><div class="q-card-text">"What does success look like for you — specifically?"</div></div>
+        <div class="q-card" data-cat="goal"><div class="q-card-cat">Goal</div><div class="q-card-text">"If this conversation leads to one real change, what would you want it to be?"</div></div>
+        <div class="q-card" data-cat="goal"><div class="q-card-cat">Goal</div><div class="q-card-text">"How will you know when you've achieved what you're aiming for?"</div></div>
+        <div class="q-card" data-cat="goal"><div class="q-card-cat">Goal</div><div class="q-card-text">"What matters most to you about this goal — underneath the goal?"</div></div>
+        <div class="q-card" data-cat="blocker"><div class="q-card-cat">Blocker</div><div class="q-card-text">"What's getting in the way that you haven't said out loud yet?"</div></div>
+        <div class="q-card" data-cat="blocker"><div class="q-card-cat">Blocker</div><div class="q-card-text">"What assumption are you making that might not be true?"</div></div>
+        <div class="q-card" data-cat="blocker"><div class="q-card-cat">Blocker</div><div class="q-card-text">"What would you do if this barrier simply didn't exist?"</div></div>
+        <div class="q-card" data-cat="blocker"><div class="q-card-cat">Blocker</div><div class="q-card-text">"What are you tolerating right now that is costing you energy?"</div></div>
+        <div class="q-card" data-cat="feedback"><div class="q-card-cat">Feedback</div><div class="q-card-text">"What do you think went well — and what would you do differently?"</div></div>
+        <div class="q-card" data-cat="feedback"><div class="q-card-cat">Feedback</div><div class="q-card-text">"What feedback have you been wanting to give — but haven't?"</div></div>
+        <div class="q-card" data-cat="feedback"><div class="q-card-cat">Feedback</div><div class="q-card-text">"If I gave you one piece of honest feedback right now, what would you want it to be?"</div></div>
+        <div class="q-card" data-cat="feedback"><div class="q-card-cat">Feedback</div><div class="q-card-text">"What does your gut tell you about how that landed with the team?"</div></div>
+        <div class="q-card" data-cat="vision"><div class="q-card-cat">Vision</div><div class="q-card-text">"Where do you see yourself in 3 years — if everything went exactly right?"</div></div>
+        <div class="q-card" data-cat="vision"><div class="q-card-cat">Vision</div><div class="q-card-text">"What kind of leader do you want to be known as — in 5 years?"</div></div>
+        <div class="q-card" data-cat="vision"><div class="q-card-cat">Vision</div><div class="q-card-text">"What would you regret NOT having tried in your leadership career?"</div></div>
+        <div class="q-card" data-cat="vision"><div class="q-card-cat">Vision</div><div class="q-card-text">"What does great look like for your team — not just good?"</div></div>
+        <div class="q-card" data-cat="challenge"><div class="q-card-cat">Challenge</div><div class="q-card-text">"What would you do if you knew you couldn't fail?"</div></div>
+        <div class="q-card" data-cat="challenge"><div class="q-card-cat">Challenge</div><div class="q-card-text">"What are you afraid to admit — even to yourself?"</div></div>
+        <div class="q-card" data-cat="challenge"><div class="q-card-cat">Challenge</div><div class="q-card-text">"What if the opposite of what you believe were true?"</div></div>
+        <div class="q-card" data-cat="challenge"><div class="q-card-cat">Challenge</div><div class="q-card-text">"What's the bravest move available to you right now?"</div></div>
+        <div class="q-card" data-cat="challenge"><div class="q-card-cat">Challenge</div><div class="q-card-text">"If your best mentor were in this situation — what would they do?"</div></div>
+        <div class="q-card" data-cat="accountability"><div class="q-card-cat">Accountability</div><div class="q-card-text">"What will you do — and by when — specifically?"</div></div>
+        <div class="q-card" data-cat="accountability"><div class="q-card-cat">Accountability</div><div class="q-card-text">"On a scale of 1–10, how committed are you to this action?"</div></div>
+        <div class="q-card" data-cat="accountability"><div class="q-card-cat">Accountability</div><div class="q-card-text">"What might get in the way — and how will you handle it?"</div></div>
+        <div class="q-card" data-cat="accountability"><div class="q-card-cat">Accountability</div><div class="q-card-text">"Who else needs to know about this commitment for it to be real?"</div></div>
+        <div class="q-card" data-cat="goal"><div class="q-card-cat">Goal</div><div class="q-card-text">"What's the smallest step that would move this forward today?"</div></div>
+        <div class="q-card" data-cat="blocker"><div class="q-card-cat">Blocker</div><div class="q-card-text">"What support do you need that you haven't asked for?"</div></div>
+        <div class="q-card" data-cat="vision"><div class="q-card-cat">Vision</div><div class="q-card-text">"If this team reached its full potential — what would it look and feel like?"</div></div>
+        <div class="q-card" data-cat="challenge"><div class="q-card-cat">Challenge</div><div class="q-card-text">"What conversation are you avoiding that you know you need to have?"</div></div>
+        <div class="q-card" data-cat="feedback"><div class="q-card-cat">Feedback</div><div class="q-card-text">"What impact did your behavior have — on the team and the outcome?"</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="why-strip" style="margin-top:5rem;">
+    <div class="why-label">Research Insight</div>
+    <div class="why-text">Studies on coaching conversations show that <strong>open questions generate 3× more insight</strong> than closed questions — and questions that begin with "What" are consistently more generative than questions beginning with "Why" (which trigger defensiveness). The single most powerful question in coaching: <strong>"What do you think?"</strong></div>
+  </div>
+</section>
+
+<!-- ═══ GROW FRAMEWORK ═══ -->
+<section id="grow" class="section-pad">
+  <div class="section-header fade-in">
+    <div class="eyebrow">Session 9 · Star Framework</div>
+    <h2 class="section-title">The GROW<br><em>Coaching Framework</em></h2>
+  </div>
+  <div class="session-banner fade-in">
+    <div class="session-banner-tag">GROW · Core</div>
+    <p class="session-banner-text"><strong>Origin:</strong> Developed by Sir John Whitmore in the 1980s — validated over 40 years of executive coaching practice. GROW is the world's most widely used coaching conversation structure, adopted by Google, Microsoft, Unilever, and thousands of organisations globally. It works because it mirrors the natural structure of effective human problem-solving.</p>
+  </div>
+
+  <div class="grow-visual fade-in">
+    <div class="grow-step gs-g">
+      <div class="grow-step-letter">G</div>
+      <div class="grow-step-full">Goal</div>
+      <div class="grow-step-name">What do you want?</div>
+      <div class="grow-step-desc">Establish a clear, motivating goal for the conversation and the longer-term. Distinguish between end goals (what you ultimately want) and performance goals (what you can control).</div>
+      <div class="grow-step-questions">
+        <div class="grow-q">"What would you like to achieve in this conversation?"</div>
+        <div class="grow-q">"What does success look like — specifically?"</div>
+        <div class="grow-q">"How will you know when you've reached it?"</div>
+        <div class="grow-q">"What matters most to you about this goal?"</div>
+      </div>
+    </div>
+    <div class="grow-step gs-r">
+      <div class="grow-step-letter">R</div>
+      <div class="grow-step-full">Reality</div>
+      <div class="grow-step-name">Where are you now?</div>
+      <div class="grow-step-desc">Explore the current situation honestly and objectively. Help the coachee see clearly — without judgment. Surface both what is working and what is not. Resist the urge to jump to solutions.</div>
+      <div class="grow-step-questions">
+        <div class="grow-q">"What is happening right now — describe it as it actually is?"</div>
+        <div class="grow-q">"What have you already tried?"</div>
+        <div class="grow-q">"What is working that you could build on?"</div>
+        <div class="grow-q">"What impact is this situation having on you?"</div>
+      </div>
+    </div>
+    <div class="grow-step gs-o">
+      <div class="grow-step-letter">O</div>
+      <div class="grow-step-full">Options</div>
+      <div class="grow-step-name">What could you do?</div>
+      <div class="grow-step-desc">Generate a wide range of possible actions. Quantity first, quality second. The coach's job is to expand the coachee's thinking — not to provide the answer. Do not evaluate options prematurely.</div>
+      <div class="grow-step-questions">
+        <div class="grow-q">"What are all the possible options — even the ones that seem unrealistic?"</div>
+        <div class="grow-q">"What would you do if you had unlimited resources?"</div>
+        <div class="grow-q">"What's been done in similar situations that you could adapt?"</div>
+        <div class="grow-q">"What else? And what else beyond that?"</div>
+      </div>
+    </div>
+    <div class="grow-step gs-w">
+      <div class="grow-step-letter">W</div>
+      <div class="grow-step-full">Will / Way Forward</div>
+      <div class="grow-step-name">What will you do?</div>
+      <div class="grow-step-desc">Convert insight and options into a specific, committed action plan. Who does what, by when? Secure genuine commitment — not compliance. Test the commitment level and address barriers.</div>
+      <div class="grow-step-questions">
+        <div class="grow-q">"Which option will you commit to — and by when?"</div>
+        <div class="grow-q">"On a scale of 1–10, how committed are you to this?"</div>
+        <div class="grow-q">"What might stop you — and how will you handle it?"</div>
+        <div class="grow-q">"What support do you need from me?"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GROW Interactive Simulator -->
+  <div class="grow-sim fade-in">
+    <div class="grow-sim-title">★ GROW in Action — Live Coaching Scenarios</div>
+    <div class="grow-sim-subtitle">Explore how GROW questions play out across three real leadership coaching scenarios. Select a scenario to see the full conversation architecture.</div>
+    <div class="grow-sim-tabs">
+      <button class="gsim-tab active" onclick="switchGSim(this,'gs1')">Scenario 1: Team Performance</button>
+      <button class="gsim-tab" onclick="switchGSim(this,'gs2')">Scenario 2: Career Development</button>
+      <button class="gsim-tab" onclick="switchGSim(this,'gs3')">Scenario 3: Difficult Conversation</button>
+    </div>
+    <div id="gs1" class="gsim-panel active">
+      <div class="gsim-scenario">💼 <strong style="color:var(--text-1);">Context:</strong> A senior manager comes to you frustrated that their team is consistently missing deadlines. They want you to tell them what to do. Instead, you use GROW.</div>
+      <div class="gsim-q-list">
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--c-light);">GOAL</div><div class="gsim-q-text">"What outcome do you want from this conversation — and what would you want to see change in your team in the next 30 days?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--c-light);">GOAL</div><div class="gsim-q-text">"If the deadline problem were completely resolved, what would that look like and how would you know?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--amber-l);">REALITY</div><div class="gsim-q-text">"Walk me through specifically what's been happening — which deadlines, which team members, what pattern do you notice?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--amber-l);">REALITY</div><div class="gsim-q-text">"What conversations have you already had with the team about this — and what happened?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--blue-l);">OPTIONS</div><div class="gsim-q-text">"What are all the possible reasons behind the missed deadlines — list every one, even the uncomfortable ones?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--blue-l);">OPTIONS</div><div class="gsim-q-text">"What approaches haven't you tried yet? What would a completely different approach look like?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--purple-l);">WILL</div><div class="gsim-q-text">"Of everything we've explored, what one action will you take this week — and exactly when will you do it?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--purple-l);">WILL</div><div class="gsim-q-text">"On a scale of 1–10, how committed are you to that? What would make it a 10?"</div></div>
+      </div>
+    </div>
+    <div id="gs2" class="gsim-panel">
+      <div class="gsim-scenario">🚀 <strong style="color:var(--text-1);">Context:</strong> A high-potential director feels stuck in their current role and unclear about their development path. They're considering leaving. You want to coach them toward clarity and commitment.</div>
+      <div class="gsim-q-list">
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--c-light);">GOAL</div><div class="gsim-q-text">"What kind of leader do you want to be in 5 years — not the title, but the actual impact you want to have?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--c-light);">GOAL</div><div class="gsim-q-text">"What would make you feel genuinely fulfilled in your career — what does that look like in practice?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--amber-l);">REALITY</div><div class="gsim-q-text">"What's energising you right now in your work — and what is draining you?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--amber-l);">REALITY</div><div class="gsim-q-text">"What feedback have you received about your strongest contributions — and how aligned is that with what you want to be known for?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--blue-l);">OPTIONS</div><div class="gsim-q-text">"What are all the different paths you could take from here — including the ones you've dismissed?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--blue-l);">OPTIONS</div><div class="gsim-q-text">"What one stretch assignment would accelerate your growth most in the next 6 months?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--purple-l);">WILL</div><div class="gsim-q-text">"What is the first concrete step you'll take toward the direction you've chosen?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--purple-l);">WILL</div><div class="gsim-q-text">"What would you need from me to make this development journey real — and not just a conversation?"</div></div>
+      </div>
+    </div>
+    <div id="gs3" class="gsim-panel">
+      <div class="gsim-scenario">💬 <strong style="color:var(--text-1);">Context:</strong> A manager on your team has been avoiding a difficult conversation with a peer who is undermining collaboration. They know it needs addressing but keep delaying. You coach them toward action.</div>
+      <div class="gsim-q-list">
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--c-light);">GOAL</div><div class="gsim-q-text">"What outcome do you want from that conversation — for yourself, for the other person, and for the team?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--c-light);">GOAL</div><div class="gsim-q-text">"What would you want both of you to walk away feeling — what does a successful conversation look like?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--amber-l);">REALITY</div><div class="gsim-q-text">"What specifically is happening that you're avoiding — describe the situation without interpretation, just the facts?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--amber-l);">REALITY</div><div class="gsim-q-text">"What is the cost of not having this conversation — to you, to them, and to the team?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--blue-l);">OPTIONS</div><div class="gsim-q-text">"What are all the ways you could approach this conversation — what different tones, settings, or framings exist?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--blue-l);">OPTIONS</div><div class="gsim-q-text">"How could you open the conversation in a way that makes them feel heard rather than attacked?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--purple-l);">WILL</div><div class="gsim-q-text">"When exactly will you have this conversation — give me the day, time, and setting?"</div></div>
+        <div class="gsim-q"><div class="gsim-q-phase" style="color:var(--purple-l);">WILL</div><div class="gsim-q-text">"Would it help to rehearse the opening sentence right now — together?"</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEEDBACK & DELEGATION ═══ -->
+<section id="feedback" class="section-pad-surface">
+  <div class="section-header fade-in">
+    <div class="eyebrow">Session 9 & 10 · Advanced Tools</div>
+    <h2 class="section-title">Feedback &<br><em>Delegation Intelligence</em></h2>
+  </div>
+
+  <div class="session-banner fade-in">
+    <div class="session-banner-tag">S9 · S10</div>
+    <p class="session-banner-text"><strong>Why these two capabilities define Coaching Leadership:</strong> Feedback is the mechanism by which learning is accelerated — it is how coaches help people see what they cannot yet see themselves. Delegation is how coaches extend their impact — distributing authority to build capability rather than retaining control to remain indispensable.</p>
+  </div>
+
+  <div class="label-mono fade-in" style="margin-bottom:1.5rem;">The SBI Feedback Model — Center for Creative Leadership</div>
+  <div class="sbi-visual fade-in">
+    <div class="sbi-cell" style="background:rgba(45,158,107,.06);border-top:2px solid var(--c);">
+      <div class="sbi-letter" style="color:var(--c);">S</div>
+      <div class="sbi-icon">📍</div>
+      <div class="sbi-name" style="color:var(--c-light);">Situation</div>
+      <div class="sbi-full" style="color:var(--c);">When & Where</div>
+      <div class="sbi-desc">Describe the specific situation — time, place, context. Anchors the feedback in observable reality rather than generalisation. Avoids the "you always" trap.</div>
+      <div class="sbi-example" style="border-color:var(--c);">"In the project review meeting on Tuesday morning, with the full leadership team present..."</div>
+    </div>
+    <div class="sbi-cell" style="background:rgba(74,130,201,.05);border-top:2px solid var(--blue);">
+      <div class="sbi-letter" style="color:var(--blue);">B</div>
+      <div class="sbi-icon">👁️</div>
+      <div class="sbi-name" style="color:var(--blue-l);">Behavior</div>
+      <div class="sbi-full" style="color:var(--blue);">What I Observed</div>
+      <div class="sbi-desc">Describe the specific, observable behavior — what was said or done. No interpretations, judgments, or assumptions about intent. Behavior is what you can see and hear.</div>
+      <div class="sbi-example" style="border-color:var(--blue);">"...when the junior team member raised their concern, you interrupted them twice and redirected to another speaker..."</div>
+    </div>
+    <div class="sbi-cell" style="background:rgba(212,133,74,.05);border-top:2px solid var(--amber);">
+      <div class="sbi-letter" style="color:var(--amber);">I</div>
+      <div class="sbi-icon">💡</div>
+      <div class="sbi-name" style="color:var(--amber-l);">Impact</div>
+      <div class="sbi-full" style="color:var(--amber);">The Effect It Had</div>
+      <div class="sbi-desc">Describe the impact on you, the team, the project, or the culture. Personal and specific. This is where the coaching conversation begins — what did they intend vs. what actually happened?</div>
+      <div class="sbi-example" style="border-color:var(--amber);">"...I noticed the team member went quiet for the rest of the meeting, and two others looked uncomfortable. The idea wasn't explored."</div>
+    </div>
+  </div>
+
+  <div style="margin-top:4rem;" class="fade-in">
+    <div class="label-mono" style="margin-bottom:1.5rem;">Situational Leadership II — Delegation by Development Level (Blanchard)</div>
+    <div class="deleg-matrix">
+      <div class="dm-cell" style="background:rgba(201,74,74,.06);border-top:2px solid var(--red);">
+        <div class="dm-level" style="color:var(--red-l);">D1 — Enthusiastic Beginner</div>
+        <div class="dm-title">Low competence · High commitment</div>
+        <div class="dm-profile" style="color:var(--text-2);font-size:.8rem;">New to the task. Motivated but lacks skills. Eager to learn.</div>
+        <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin:.5rem 0 .3rem;">Leader Style</div>
+        <div class="dm-action" style="color:var(--red-l);border-color:rgba(201,74,74,.3);">Direct — S1</div>
+        <div style="font-size:.78rem;color:var(--text-2);margin-top:.6rem;line-height:1.5;">Provide clear instruction, structure, and close follow-up. Tell what, when, and how.</div>
+      </div>
+      <div class="dm-cell" style="background:rgba(212,133,74,.06);border-top:2px solid var(--amber);">
+        <div class="dm-level" style="color:var(--amber-l);">D2 — Disillusioned Learner</div>
+        <div class="dm-title">Some competence · Low commitment</div>
+        <div class="dm-profile" style="color:var(--text-2);font-size:.8rem;">Developing but frustrated. Realises the task is harder than expected.</div>
+        <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin:.5rem 0 .3rem;">Leader Style</div>
+        <div class="dm-action" style="color:var(--amber-l);border-color:rgba(212,133,74,.3);">Coach — S2</div>
+        <div style="font-size:.78rem;color:var(--text-2);margin-top:.6rem;line-height:1.5;">Explain and clarify. Listen and affirm. Use GROW conversations to rebuild confidence.</div>
+      </div>
+      <div class="dm-cell" style="background:rgba(74,130,201,.06);border-top:2px solid var(--blue);">
+        <div class="dm-level" style="color:var(--blue-l);">D3 — Capable but Cautious</div>
+        <div class="dm-title">High competence · Variable commitment</div>
+        <div class="dm-profile" style="color:var(--text-2);font-size:.8rem;">Has the skill but lacks confidence or motivation. Needs reassurance.</div>
+        <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin:.5rem 0 .3rem;">Leader Style</div>
+        <div class="dm-action" style="color:var(--blue-l);border-color:rgba(74,130,201,.3);">Support — S3</div>
+        <div style="font-size:.78rem;color:var(--text-2);margin-top:.6rem;line-height:1.5;">Listen, collaborate, encourage. Ask rather than tell. Facilitate problem-solving without taking over.</div>
+      </div>
+      <div class="dm-cell" style="background:var(--c-subtle);border-top:2px solid var(--c);">
+        <div class="dm-level" style="color:var(--c-light);">D4 — Self-Reliant Achiever</div>
+        <div class="dm-title">High competence · High commitment</div>
+        <div class="dm-profile" style="color:var(--text-2);font-size:.8rem;">Skilled and motivated. Ready for full autonomy and ownership.</div>
+        <div style="font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text-3);margin:.5rem 0 .3rem;">Leader Style</div>
+        <div class="dm-action" style="color:var(--c-light);border-color:var(--c-border);">Delegate — S4</div>
+        <div style="font-size:.78rem;color:var(--text-2);margin-top:.6rem;line-height:1.5;">Step back. Set the outcome and trust the process. Check in without checking up. Enable full ownership.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reflection-card" style="margin-top:3rem;" class="fade-in">
+    <div class="reflection-icon">💬</div>
+    <p class="reflection-q">"For each person on your team: which development level (D1–D4) are they at for their key responsibilities — and are you leading them at the right style, or are you over-directing your D4s and under-supporting your D2s?"</p>
+  </div>
+</section>
+
+<!-- ═══ COACHING EN EL CINE ═══ -->
+<section id="cinema">
+  <div class="section-header fade-in" style="position:relative;z-index:1;">
+    <div class="eyebrow">Coaching Intelligence · Creative Section</div>
+    <h2 class="section-title">Coaching<br><em>in Cinema</em></h2>
+    <p style="font-size:.97rem;color:var(--text-2);max-width:580px;line-height:1.75;margin-top:1.5rem;">Cinema is one of the most powerful lenses for understanding human behavior and leadership. These six films each contain an unforgettable coaching figure — and a lesson that translates directly to how you lead and develop others at stc.</p>
+  </div>
+  <div class="cinema-grid fade-in">
+
+    <div class="cinema-card">
+      <div class="cinema-card-number">01</div>
+      <div class="cinema-card-top">
+        <div class="cinema-role-badge" style="color:var(--c-light);border-color:var(--c-border);">The Inspirational Coach</div>
+        <div class="cinema-film">Dead Poets Society</div>
+        <div class="cinema-year">1989 · Robin Williams as John Keating</div>
+        <div class="cinema-coach-name" style="color:var(--c-light);">John Keating — "O Captain, My Captain"</div>
+        <div class="cinema-coach-desc">An English teacher who uses poetry to ignite autonomous thinking in his students. He doesn't give answers — he creates conditions for discovery. His coaching tool: reframe the world so differently that people cannot return to their old way of seeing.</div>
+      </div>
+      <div class="cinema-card-bottom">
+        <div class="cinema-lesson-label">Leadership Lesson</div>
+        <div class="cinema-lesson">"Carpe Diem — seize the day. Make your lives extraordinary."</div>
+        <div class="cinema-apply"><strong style="color:var(--text-1);">Applied to your leadership:</strong> How do you create moments of genuine discovery in your team? Keating stood on desks to force a new perspective. What is the equivalent in your next one-to-one — the question or challenge that changes the view entirely?</div>
+      </div>
+    </div>
+
+    <div class="cinema-card">
+      <div class="cinema-card-number">02</div>
+      <div class="cinema-card-top">
+        <div class="cinema-role-badge" style="color:var(--amber-l);border-color:rgba(212,133,74,.3);">Standards & Accountability</div>
+        <div class="cinema-film">Coach Carter</div>
+        <div class="cinema-year">2005 · Samuel L. Jackson as Ken Carter</div>
+        <div class="cinema-coach-name" style="color:var(--amber-l);">Ken Carter — The Transformational Coach</div>
+        <div class="cinema-coach-desc">A high school basketball coach who locks his undefeated team out of the gym because their academic performance doesn't meet his standards. He sees the full person — not just the player. His coaching belief: high expectations are a form of profound respect.</div>
+      </div>
+      <div class="cinema-card-bottom">
+        <div class="cinema-lesson-label">Leadership Lesson</div>
+        <div class="cinema-lesson">"Our deepest fear is not that we are inadequate. Our deepest fear is that we are powerful beyond measure."</div>
+        <div class="cinema-apply"><strong style="color:var(--text-1);">Applied to your leadership:</strong> Do you hold people to their full potential — or to what they've demonstrated so far? Carter's coaching was an act of belief in people who hadn't yet believed in themselves. What standard are you setting for your team's development?</div>
+      </div>
+    </div>
+
+    <div class="cinema-card">
+      <div class="cinema-card-number">03</div>
+      <div class="cinema-card-top">
+        <div class="cinema-role-badge" style="color:var(--blue-l);border-color:rgba(74,130,201,.3);">Trust & Vulnerability</div>
+        <div class="cinema-film">Good Will Hunting</div>
+        <div class="cinema-year">1997 · Robin Williams as Sean Maguire</div>
+        <div class="cinema-coach-name" style="color:var(--blue-l);">Sean Maguire — The Safe Space Creator</div>
+        <div class="cinema-coach-desc">A therapist who breaks through the defenses of a defensive genius by refusing to be impressed — and by being willing to be vulnerable himself. His coaching principle: you cannot coach someone who doesn't trust you. And trust requires the coach to go first.</div>
+      </div>
+      <div class="cinema-card-bottom">
+        <div class="cinema-lesson-label">Leadership Lesson</div>
+        <div class="cinema-lesson">"It's not your fault." — the most powerful coaching moment is often the simplest one.</div>
+        <div class="cinema-apply"><strong style="color:var(--text-1);">Applied to your leadership:</strong> Lencioni's first dysfunction is absence of trust. Maguire built trust through radical vulnerability. What do you share of yourself as a leader — and is there more that would make your coaching conversations safer for others?</div>
+      </div>
+    </div>
+
+    <div class="cinema-card">
+      <div class="cinema-card-number">04</div>
+      <div class="cinema-card-top">
+        <div class="cinema-role-badge" style="color:var(--purple-l);border-color:rgba(138,93,201,.3);">Challenge Assumptions</div>
+        <div class="cinema-film">Moneyball</div>
+        <div class="cinema-year">2011 · Brad Pitt as Billy Beane</div>
+        <div class="cinema-coach-name" style="color:var(--purple-l);">Billy Beane — The Question-First Leader</div>
+        <div class="cinema-coach-desc">A baseball GM who rebuilds his entire team by asking one coaching question: "What are we actually trying to achieve — and are all our assumptions correct?" He coaches his scouts to see differently — replacing intuition with evidence and convention with curiosity.</div>
+      </div>
+      <div class="cinema-card-bottom">
+        <div class="cinema-lesson-label">Leadership Lesson</div>
+        <div class="cinema-lesson">"Adapt or die." — the most powerful coaches question the system, not just the individual.</div>
+        <div class="cinema-apply"><strong style="color:var(--text-1);">Applied to your leadership:</strong> What assumptions in your organization are "how things are done" that a good coaching question would expose as wrong? What would you see differently if you asked your team: "What if everything we believed about this was incorrect?"</div>
+      </div>
+    </div>
+
+    <div class="cinema-card">
+      <div class="cinema-card-number">05</div>
+      <div class="cinema-card-top">
+        <div class="cinema-role-badge" style="color:var(--red-l);border-color:rgba(201,74,74,.3);">The Anti-Coach — What NOT to Do</div>
+        <div class="cinema-film">Whiplash</div>
+        <div class="cinema-year">2014 · J.K. Simmons as Terence Fletcher</div>
+        <div class="cinema-coach-name" style="color:var(--red-l);">Fletcher — The Fear-Based Mentor</div>
+        <div class="cinema-coach-desc">A music conservatory instructor who uses psychological terror, humiliation, and fear to push his students to greatness. He achieves results — but at catastrophic human cost. His approach destroys trust, psychological safety, and wellbeing. Brilliance through trauma is not coaching.</div>
+      </div>
+      <div class="cinema-card-bottom">
+        <div class="cinema-lesson-label">Leadership Lesson — What NOT to Replicate</div>
+        <div class="cinema-lesson">"There are no two words in the English language more harmful than 'good job'." — this belief is the fatal flaw.</div>
+        <div class="cinema-apply"><strong style="color:var(--text-1);">Applied to your leadership:</strong> High standards do NOT require fear. Coach Carter achieved the same result through belief and respect. Where in your leadership style might pressure be crossing into fear — and what does that cost in the long run?</div>
+      </div>
+    </div>
+
+    <div class="cinema-card">
+      <div class="cinema-card-number">06</div>
+      <div class="cinema-card-top">
+        <div class="cinema-role-badge" style="color:var(--c-light);border-color:var(--c-border);">The Pursuit of Potential</div>
+        <div class="cinema-film">The Pursuit of Happyness</div>
+        <div class="cinema-year">2006 · Will Smith as Chris Gardner</div>
+        <div class="cinema-coach-name" style="color:var(--c-light);">Chris Gardner — Self-Coaching Mastery</div>
+        <div class="cinema-coach-desc">A man who coaches himself through homelessness, single parenthood, and professional failure to become a millionaire stockbroker. His coaching tool: relentless GROW thinking applied to himself — clear goal, ruthless honesty about reality, creative options, and unbreakable will.</div>
+      </div>
+      <div class="cinema-card-bottom">
+        <div class="cinema-lesson-label">Leadership Lesson</div>
+        <div class="cinema-lesson">"Don't ever let someone tell you that you can't do something. Not even me."</div>
+        <div class="cinema-apply"><strong style="color:var(--text-1);">Applied to your leadership:</strong> GROW is as powerful applied to yourself as to others. Gardner's internal coaching dialogue is the prototype. Are you applying the same quality of developmental thinking to your own leadership growth that you apply to your team's?</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ PROCESO PERSONAL DE COACHING ═══ -->
+<section id="proceso" class="section-pad-surface">
+  <div class="section-header fade-in">
+    <div class="eyebrow">My Coaching Practice</div>
+    <h2 class="section-title">Your Personal<br><em>Coaching Protocol</em></h2>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;" class="fade-in">
+    <div>
+      <p class="body-text" style="margin-bottom:3rem;">This 5-step protocol is designed to be used in two ways: as a <strong style="color:var(--text-1);">self-coaching practice</strong> you apply to your own leadership challenges, and as a <strong style="color:var(--text-1);">team coaching conversation structure</strong> you apply in your 1:1s, team meetings, and development conversations.</p>
+      <div class="coaching-process">
+        <div class="cp-step">
+          <div class="cp-step-num"><div class="cp-step-badge">1</div></div>
+          <div class="cp-step-body">
+            <div class="cp-step-phase">Pause & Presence</div>
+            <div class="cp-step-title">Create the Coaching Space</div>
+            <div class="cp-step-desc">Before any coaching conversation — with yourself or others — create a deliberate pause. Put away distractions. Set a clear intention: "This next 20 minutes is about development, not tasks." The quality of your presence determines the quality of the conversation.</div>
+            <div class="cp-step-tools"><span class="cp-tool">Mindful Pause</span><span class="cp-tool">Level-3 Listening</span><span class="cp-tool">Clear Intent</span></div>
+          </div>
+        </div>
+        <div class="cp-step">
+          <div class="cp-step-num"><div class="cp-step-badge">2</div></div>
+          <div class="cp-step-body">
+            <div class="cp-step-phase">Surface the Real Issue</div>
+            <div class="cp-step-title">Ask Before You Assume</div>
+            <div class="cp-step-desc">The first topic raised is rarely the real topic. Start with: "What do you most want to focus on — and what's really going on beneath that?" For self-coaching: "What is actually bothering me about this — and is that the real issue?"</div>
+            <div class="cp-step-tools"><span class="cp-tool">Clarifying Questions</span><span class="cp-tool">Iceberg Model</span><span class="cp-tool">Active Listening</span></div>
+          </div>
+        </div>
+        <div class="cp-step">
+          <div class="cp-step-num"><div class="cp-step-badge">3</div></div>
+          <div class="cp-step-body">
+            <div class="cp-step-phase">GROW the Conversation</div>
+            <div class="cp-step-title">Structure for Insight</div>
+            <div class="cp-step-desc">Apply the GROW framework deliberately. Resist jumping to Options before spending real time on Goal (clarity of what success means) and Reality (honest current state). This is the most commonly skipped step — and the most important one.</div>
+            <div class="cp-step-tools"><span class="cp-tool">GROW Model</span><span class="cp-tool">Powerful Questions</span><span class="cp-tool">Challenge Assumptions</span></div>
+          </div>
+        </div>
+        <div class="cp-step">
+          <div class="cp-step-num"><div class="cp-step-badge">4</div></div>
+          <div class="cp-step-body">
+            <div class="cp-step-phase">Secure Real Commitment</div>
+            <div class="cp-step-title">From Insight to Action</div>
+            <div class="cp-step-desc">Coaching without commitment is conversation. Always end with a specific action, a specific timeline, and a specific accountability structure. "What will you do, by when — and how will I know?" Test commitment on a 1-10 scale. Anything below 8 needs a different plan.</div>
+            <div class="cp-step-tools"><span class="cp-tool">GROW Will Phase</span><span class="cp-tool">Commitment Scale</span><span class="cp-tool">Action Planning</span></div>
+          </div>
+        </div>
+        <div class="cp-step">
+          <div class="cp-step-num"><div class="cp-step-badge">5</div></div>
+          <div class="cp-step-body">
+            <div class="cp-step-phase">Close & Reflect</div>
+            <div class="cp-step-title">The Coaching Loop</div>
+            <div class="cp-step-desc">Close every coaching conversation by reflecting on the conversation itself: "What was most valuable about this for you?" and "What did I notice as a coach?" Schedule a follow-up — coaching without follow-up loses 60% of its impact. The loop is what makes it developmental.</div>
+            <div class="cp-step-tools"><span class="cp-tool">Reflection</span><span class="cp-tool">Follow-Up Protocol</span><span class="cp-tool">SBI Feedback</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="label-mono" style="margin-bottom:2rem;">Proposals for Your Team — Apply This Week</div>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAcc(this)"><span class="accordion-trigger-label">The 20-Minute Coaching 1:1 — Weekly Protocol</span><span class="accordion-icon">+</span></button>
+          <div class="accordion-body"><p>Replace one task-focused 1:1 per week with a pure coaching conversation. The agenda: one question — "What is the most important thing you want to think through this week, professionally?" Use Steps 2–5 of the protocol. No solving. No advice. Pure GROW. Document what they commit to and review it next week. Do this for 4 weeks and observe the change in initiative, confidence, and self-direction.</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAcc(this)"><span class="accordion-trigger-label">The Team Coaching Circle — Monthly Practice</span><span class="accordion-icon">+</span></button>
+          <div class="accordion-body"><p>Once a month, gather your team for a 60-minute peer coaching session. One person brings a real leadership challenge. The rest of the team — not you — coaches them through GROW. Your role: facilitate and observe. Debrief together: what questions were most powerful? This develops coaching capability across the whole team simultaneously and creates a culture of developmental dialogue.</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAcc(this)"><span class="accordion-trigger-label">The Feedback Friday Habit — Bi-Weekly Structure</span><span class="accordion-icon">+</span></button>
+          <div class="accordion-body"><p>Every other Friday, each team member sends you one SBI-structured observation — about anything: a meeting, a decision, a behaviour they've noticed in the team or in themselves. You respond to each one with one coaching question. This creates a written coaching dialogue, normalises feedback, and builds psychological safety around honest observation over time.</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAcc(this)"><span class="accordion-trigger-label">The Development Conversation — Quarterly Protocol</span><span class="accordion-icon">+</span></button>
+          <div class="accordion-body"><p>Four times a year, hold a structured 60-minute development conversation with each direct report. Agenda: (1) Where are you now — what are you proudest of and what has challenged you most? (2) Where do you want to go — vision, aspiration, next level? (3) What is the gap — what would you need to develop? (4) What is the plan — one specific stretch goal for the next quarter? This is the 20% of the 70-20-10 model — the most powerful lever you have for talent development.</p></div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-trigger" onclick="toggleAcc(this)"><span class="accordion-trigger-label">Self-Coaching: The Weekly 10-Minute Reflection</span><span class="accordion-icon">+</span></button>
+          <div class="accordion-body"><p>Every Friday, spend 10 minutes coaching yourself through four questions: (1) What am I most proud of as a leader this week? (2) What one situation did I handle less well than I wanted to — what would I do differently? (3) Who did I develop this week — and how? (4) What is my one coaching commitment for next week? Write the answers. Review them monthly. This is the most underused leadership development tool available — and it costs only 10 minutes.</p></div>
+        </div>
+      </div>
+      <div class="quote-card" style="margin-top:2rem;">
+        <p>"Coaching is a practice, not an event. The leaders who transform organizations are the ones who coach in the corridor, in the corridor, at the whiteboard, and in the five minutes before a meeting starts — not just in formal sessions."</p>
+        <div class="quote-card-attr">Executive Coaching in Practice</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DATOS & IMPACTO ═══ -->
+<section id="datos" class="section-pad">
+  <div class="section-header fade-in">
+    <div class="eyebrow">Research & Evidence</div>
+    <h2 class="section-title">The Business Case<br><em>for Coaching Leadership</em></h2>
+  </div>
+  <div class="data-grid fade-in">
+    <div class="data-cell" style="background:rgba(45,158,107,.06);border-top:2px solid var(--c);">
+      <div class="data-num" style="color:var(--c-light);">788%</div>
+      <div class="data-label">Average ROI on executive coaching investment — one of the highest returns in talent development</div>
+      <div class="data-source">ICF / Manchester Group Study</div>
+    </div>
+    <div class="data-cell" style="background:rgba(74,130,201,.05);">
+      <div class="data-num" style="color:var(--blue-l);">86%</div>
+      <div class="data-label">of organizations report they at least recouped their coaching investment — with top performers seeing 7× returns</div>
+      <div class="data-source">ICF Global Study</div>
+    </div>
+    <div class="data-cell" style="background:rgba(212,133,74,.05);">
+      <div class="data-num" style="color:var(--amber-l);">70%</div>
+      <div class="data-label">of coachees report improved work performance, relationships, and communication effectiveness post-coaching</div>
+      <div class="data-source">ICF Coaching Impact Study</div>
+    </div>
+    <div class="data-cell" style="background:rgba(138,93,201,.05);">
+      <div class="data-num" style="color:var(--purple-l);">4×</div>
+      <div class="data-label">Employees with coaching-style managers are 4× more engaged — and engaged teams generate 21% more profit</div>
+      <div class="data-source">Gallup Workplace Research</div>
+    </div>
+  </div>
+
+  <div style="margin-top:4rem;" class="fade-in">
+    <div class="label-mono" style="margin-bottom:1.5rem;">Impact by Coaching Area — % of Leaders Reporting Improvement</div>
+    <div class="roi-bars">
+      <div class="roi-bar-row"><div class="roi-bar-label">Work performance & productivity</div><div class="roi-bar-track"><div class="roi-bar-fill" style="width:70%"></div></div><div class="roi-bar-val">70%</div></div>
+      <div class="roi-bar-row"><div class="roi-bar-label">Work/life balance</div><div class="roi-bar-track"><div class="roi-bar-fill" style="width:67%"></div></div><div class="roi-bar-val">67%</div></div>
+      <div class="roi-bar-row"><div class="roi-bar-label">Business management skills</div><div class="roi-bar-track"><div class="roi-bar-fill" style="width:61%"></div></div><div class="roi-bar-val">61%</div></div>
+      <div class="roi-bar-row"><div class="roi-bar-label">Relationships with direct reports</div><div class="roi-bar-track"><div class="roi-bar-fill" style="width:77%"></div></div><div class="roi-bar-val">77%</div></div>
+      <div class="roi-bar-row"><div class="roi-bar-label">Team effectiveness & collaboration</div><div class="roi-bar-track"><div class="roi-bar-fill" style="width:67%"></div></div><div class="roi-bar-val">67%</div></div>
+      <div class="roi-bar-row"><div class="roi-bar-label">Communication skills</div><div class="roi-bar-track"><div class="roi-bar-fill" style="width:72%"></div></div><div class="roi-bar-val">72%</div></div>
+      <div class="roi-bar-row"><div class="roi-bar-label">Self-confidence as a leader</div><div class="roi-bar-track"><div class="roi-bar-fill" style="width:80%"></div></div><div class="roi-bar-val">80%</div></div>
+      <div class="roi-bar-row"><div class="roi-bar-label">Strategic thinking capability</div><div class="roi-bar-track"><div class="roi-bar-fill" style="width:53%"></div></div><div class="roi-bar-val">53%</div></div>
+    </div>
+    <div style="font-family:var(--mono);font-size:.53rem;letter-spacing:.09em;text-transform:uppercase;color:var(--text-3);margin-top:.5rem;text-align:right;">ICF Global Coaching Client Study — % of leaders reporting significant improvement after coaching</div>
+  </div>
+</section>
+
+<!-- ═══ CASES ═══ -->
+<section id="cases" class="section-pad-surface">
+  <div class="section-header fade-in">
+    <div class="eyebrow">Global Case Studies — Real Impact</div>
+    <h2 class="section-title">Coaching Culture<br><em>in Practice</em></h2>
+  </div>
+  <div class="cases-tabs">
+    <button class="cases-tab active" onclick="switchCase(this,'cc1')">Google — gTalk Coaching</button>
+    <button class="cases-tab" onclick="switchCase(this,'cc2')">IBM — Leader as Coach</button>
+    <button class="cases-tab" onclick="switchCase(this,'cc3')">Microsoft — Growth Mindset</button>
+    <button class="cases-tab" onclick="switchCase(this,'cc4')">Unilever — Coaching at Scale</button>
+  </div>
+
+  <div id="cc1" class="case-panel active">
+    <div class="case-spread">
+      <div><div class="case-meta-label">Context</div><div class="case-title">Google's Project Oxygen — What Makes a Great Manager?</div><div class="case-tag">Google · Technology · Global · 2008–Present</div><p style="font-size:.9rem;color:var(--text-2);line-height:1.75;">Google set out to prove that managers don't matter — and instead proved the opposite. After analyzing 10,000 manager performance reviews, employee surveys, and nominations for top-manager awards, they identified the 8 behaviors of Google's best managers. Coaching was number one.</p><div class="quote-card" style="margin-top:1.5rem;"><p>"Good managers coach. Bad managers tell. And the difference in team outcomes between these two approaches is not marginal — it is transformational."</p><div class="quote-card-attr">Google Project Oxygen Finding</div></div></div>
+      <div><div class="case-h4">The 8 Behaviors — Behavior #1: Be a Good Coach</div><p class="case-body-p">Google's research found that the single most important behavior of their best managers was being an effective coach. This meant: giving specific feedback, having regular one-on-ones focused on development (not tasks), and empowering team members to solve their own problems rather than solving them. Managers who scored highest on coaching had teams that were significantly more productive, retained their best people longer, and reported higher satisfaction.</p><div class="case-h4">What They Changed</div><p class="case-body-p">Google trained every manager in coaching skills — specifically active listening, powerful questioning, and structured feedback. They redesigned 1:1 meeting templates to include coaching elements. They measured coaching quality as part of manager performance reviews — making it a professional accountability, not just a soft skill workshop.</p><div class="case-outcomes"><div class="case-outcome"><div class="outcome-metric">#1</div><div class="outcome-label">Coaching ranked as the top behavior of Google's best managers — above technical expertise</div></div><div class="case-outcome"><div class="outcome-metric">+25%</div><div class="outcome-label">Performance improvement in teams led by coaching-style managers vs directive managers</div></div><div class="case-outcome"><div class="outcome-metric">10,000</div><div class="outcome-label">Manager reviews analyzed over 5 years to identify coaching as the critical differentiator</div></div><div class="case-outcome"><div class="outcome-metric">↓37%</div><div class="outcome-label">Reduction in team attrition in units led by managers who scored highest on coaching behaviors</div></div></div></div>
+    </div>
+  </div>
+
+  <div id="cc2" class="case-panel">
+    <div class="case-spread">
+      <div><div class="case-meta-label">Context</div><div class="case-title">IBM — Embedding the Leader-as-Coach Model Globally</div><div class="case-tag">IBM · Technology / Consulting · Global · 2015–Present</div><p style="font-size:.9rem;color:var(--text-2);line-height:1.75;">With 350,000+ employees across 170 countries, IBM needed a scalable model for leadership development that didn't require external coaching for every person. Their solution: train every senior leader to be a coach — creating an internal coaching capability that scaled without additional cost.</p><div class="quote-card" style="margin-top:1.5rem;"><p>"We discovered that the highest-impact leadership development wasn't what happened in the classroom. It was what happened in the conversation between a manager and their team member the Monday morning after."</p><div class="quote-card-attr">IBM HR Learning Research</div></div></div>
+      <div><div class="case-h4">The Leader-as-Coach Programme</div><p class="case-body-p">IBM trained over 3,000 senior leaders globally in coaching skills using a model that directly parallels what you are learning today: structured coaching conversations, powerful questioning, and GROW-based frameworks. Leaders were certified in coaching capability — not as an optional extra but as a core leadership competency evaluated in their annual reviews.</p><div class="case-h4">The Multiplier Effect</div><p class="case-body-p">Each trained leader was expected to coach at least 3 team members — who were then equipped to coach their own teams. This created a coaching cascade across the organization: 3,000 trained leaders × 3 people each = 9,000 people receiving regular coaching, at near-zero marginal cost. The 70-20-10 model in institutional action.</p><div class="case-outcomes"><div class="case-outcome"><div class="outcome-metric">3,000+</div><div class="outcome-label">Senior leaders trained in coaching skills globally across IBM</div></div><div class="case-outcome"><div class="outcome-metric">+32%</div><div class="outcome-label">Increase in employee engagement scores in teams led by leader-coaches vs control groups</div></div><div class="case-outcome"><div class="outcome-metric">9,000+</div><div class="outcome-label">People receiving regular coaching through the cascade model — at near-zero additional cost</div></div><div class="case-outcome"><div class="outcome-metric">↑18%</div><div class="outcome-label">Performance improvement in teams with leader-coaches, measured over 18 months</div></div></div></div>
+    </div>
+  </div>
+
+  <div id="cc3" class="case-panel">
+    <div class="case-spread">
+      <div><div class="case-meta-label">Context</div><div class="case-title">Microsoft — The Growth Mindset as Coaching Foundation</div><div class="case-tag">Microsoft · Technology · Global · 2014–Present</div><p style="font-size:.9rem;color:var(--text-2);line-height:1.75;">When Satya Nadella became CEO in 2014, he made Carol Dweck's Growth Mindset the philosophical foundation of Microsoft's entire leadership culture. The premise: if leaders coach through a growth mindset — believing capability is developable rather than fixed — the entire organisation transforms.</p><div class="quote-card" style="margin-top:1.5rem;"><p>"Our culture shift from 'know-it-all' to 'learn-it-all' was ultimately a coaching shift. Leaders stopped proving their expertise and started developing others'."</p><div class="quote-card-attr">Satya Nadella, CEO Microsoft</div></div></div>
+      <div><div class="case-h4">The Coaching Culture Architecture</div><p class="case-body-p">Microsoft redesigned its entire performance management system around coaching principles. They eliminated the stack-ranking system (which destroyed collaboration and coaching) and replaced it with a model that explicitly measured how well leaders developed their team members. A manager's review now included: "How much did you grow the people around you this year?"</p><div class="case-h4">The Systemic Result</div><p class="case-body-p">Within three years of embedding coaching-culture principles, Microsoft's market capitalization more than doubled — from $300B to over $700B. Employee engagement scores reached decade highs. Cross-team collaboration increased dramatically. The coaching shift was not just a talent play — it was the primary driver of Microsoft's return to innovation leadership.</p><div class="case-outcomes"><div class="case-outcome"><div class="outcome-metric">+$400B</div><div class="outcome-label">Market cap increase within 3 years of coaching-culture transformation</div></div><div class="case-outcome"><div class="outcome-metric">+40%</div><div class="outcome-label">Employee engagement score increase in the first 3 years of cultural coaching shift</div></div><div class="case-outcome"><div class="outcome-metric">→</div><div class="outcome-label">Stack-ranking eliminated — replaced with coaching-based development evaluation</div></div><div class="case-outcome"><div class="outcome-metric">Growth</div><div class="outcome-label">Mindset embedded in every people process: hiring, review, promotion, and succession</div></div></div></div>
+    </div>
+  </div>
+
+  <div id="cc4" class="case-panel">
+    <div class="case-spread">
+      <div><div class="case-meta-label">Context</div><div class="case-title">Unilever — Coaching at Scale for 148,000 People</div><div class="case-tag">Unilever · FMCG · Global · 2010–Present</div><p style="font-size:.9rem;color:var(--text-2);line-height:1.75;">Unilever built one of the world's most recognized leadership development programmes — the Unilever Leadership Development Programme — with coaching at its core. They had a clear belief: the competitive advantage of a 148,000-person organisation is the quality of its conversations between leaders and their teams.</p><div class="quote-card" style="margin-top:1.5rem;"><p>"We don't just send people on leadership programmes. We build coaching into every conversation, every review, every project debrief. Leadership development happens in the moments between the formal events."</p><div class="quote-card-attr">Unilever HR Strategy</div></div></div>
+      <div><div class="case-h4">The Coaching Architecture</div><p class="case-body-p">Unilever trained all senior leaders in coaching skills using a model that combined GROW-based conversation frameworks with structured feedback tools. They created "coaching moments" — building brief coaching check-ins into team meetings, project reviews, and even town halls. The principle: coaching is not a separate activity — it is how leadership happens.</p><div class="case-h4">The Talent Multiplier</div><p class="case-body-p">Unilever's internal coaching culture became their primary talent retention mechanism. Their top talent stayed not because of compensation alone — but because they felt genuinely developed. In a 2019 global survey, 89% of Unilever employees said they had regular developmental conversations with their manager. The coaching culture directly drove their ability to develop leaders from within rather than recruiting externally.</p><div class="case-outcomes"><div class="case-outcome"><div class="outcome-metric">89%</div><div class="outcome-label">Of employees reporting regular developmental conversations with their manager — global survey 2019</div></div><div class="case-outcome"><div class="outcome-metric">↑23%</div><div class="outcome-label">Internal leadership promotion rate after coaching culture implementation — more leaders developed from within</div></div><div class="case-outcome"><div class="outcome-metric">148K</div><div class="outcome-label">People across 190 countries whose development was shaped by coaching-capable leaders</div></div><div class="case-outcome"><div class="outcome-metric">Top 5</div><div class="outcome-label">Most attractive employer globally for MBA graduates — coaching culture cited as key reason</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DIAGNOSTIC ═══ -->
+<section id="diagnostic" class="section-pad">
+  <div class="section-header fade-in">
+    <div class="eyebrow">Capability Diagnostic</div>
+    <h2 class="section-title">Your Coaching<br><em>Leadership Profile</em></h2>
+  </div>
+  <div class="diagnostic-grid fade-in">
+    <div>
+      <p style="font-size:.95rem;color:var(--text-2);line-height:1.78;margin-bottom:3rem;">Rate your current practice honestly — where you actually are, not where you aspire to be. Use this as a baseline for your 90-day development plan.</p>
+      <div class="diag-item">
+        <div class="diag-item-header"><span class="diag-item-label">Coaching Mindset (Enabling vs Solving)</span><span class="diag-item-value" id="cv1">5</span></div>
+        <input type="range" class="diag-slider" id="cs1" min="1" max="10" value="5" oninput="updateDiagC()">
+        <div class="diag-scale"><span class="diag-scale-label">Always Solving</span><span class="diag-scale-label">Always Enabling</span></div>
+      </div>
+      <div class="diag-item">
+        <div class="diag-item-header"><span class="diag-item-label">Listening Quality (Level 1–3)</span><span class="diag-item-value" id="cv2">5</span></div>
+        <input type="range" class="diag-slider" id="cs2" min="1" max="10" value="5" oninput="updateDiagC()">
+        <div class="diag-scale"><span class="diag-scale-label">Mostly Internal Listening</span><span class="diag-scale-label">Global Listening</span></div>
+      </div>
+      <div class="diag-item">
+        <div class="diag-item-header"><span class="diag-item-label">GROW Framework Mastery</span><span class="diag-item-value" id="cv3">5</span></div>
+        <input type="range" class="diag-slider" id="cs3" min="1" max="10" value="5" oninput="updateDiagC()">
+        <div class="diag-scale"><span class="diag-scale-label">Unaware</span><span class="diag-scale-label">Fluent & Consistent</span></div>
+      </div>
+      <div class="diag-item">
+        <div class="diag-item-header"><span class="diag-item-label">Feedback Quality (SBI Practice)</span><span class="diag-item-value" id="cv4">5</span></div>
+        <input type="range" class="diag-slider" id="cs4" min="1" max="10" value="5" oninput="updateDiagC()">
+        <div class="diag-scale"><span class="diag-scale-label">Vague / Avoided</span><span class="diag-scale-label">Specific & Regular</span></div>
+      </div>
+      <div class="accordion" style="margin-top:2.5rem;">
+        <div class="accordion-item"><button class="accordion-trigger" onclick="toggleAcc(this)"><span class="accordion-trigger-label">How to use this profile with your team</span><span class="accordion-icon">+</span></button><div class="accordion-body"><p>Share your self-assessment with your direct reports and invite them to rate you from their perspective. The gap between your self-perception and theirs is your highest-leverage coaching development area. This conversation alone — done with humility — is itself a powerful coaching act.</p></div></div>
+        <div class="accordion-item"><button class="accordion-trigger" onclick="toggleAcc(this)"><span class="accordion-trigger-label">Why scores below 5 are the opportunity, not the problem</span><span class="accordion-icon">+</span></button><div class="accordion-body"><p>A score below 5 on any dimension means you have the most to gain from focused practice. Select that dimension, choose one protocol from the Lab below, and practice it deliberately for 21 days. Research on habit formation shows that focused practice over 21 days creates a new behavioral default — the coaching behavior becomes natural rather than effortful.</p></div></div>
+      </div>
+    </div>
+    <div class="diagnostic-output">
+      <div style="width:100%;max-width:340px;margin:0 auto 2.5rem;">
+        <svg viewBox="0 0 360 360" width="100%" id="radar-c">
+          <polygon points="180,80 280,150 240,270 120,270 80,150" fill="none" stroke="#243020" stroke-width="1"/>
+          <polygon points="180,105 255,162 225,258 135,258 105,162" fill="none" stroke="#243020" stroke-width="1"/>
+          <polygon points="180,130 230,174 210,246 150,246 130,174" fill="none" stroke="#243020" stroke-width="1"/>
+          <polygon points="180,155 205,186 195,234 165,234 155,186" fill="none" stroke="#243020" stroke-width="1"/>
+          <line x1="180" y1="180" x2="180" y2="80" stroke="#243020" stroke-width="1"/>
+          <line x1="180" y1="180" x2="280" y2="150" stroke="#243020" stroke-width="1"/>
+          <line x1="180" y1="180" x2="240" y2="270" stroke="#243020" stroke-width="1"/>
+          <line x1="180" y1="180" x2="120" y2="270" stroke="#243020" stroke-width="1"/>
+          <line x1="180" y1="180" x2="80" y2="150" stroke="#243020" stroke-width="1"/>
+          <polygon id="radar-c-poly" points="180,80 280,150 240,270 120,270 80,150" fill="rgba(45,158,107,0.12)" stroke="#5DC99A" stroke-width="1.5"/>
+          <text x="180" y="67" text-anchor="middle" font-family="DM Mono" font-size="8" fill="#8A8880">MINDSET</text>
+          <text x="294" y="148" text-anchor="start" font-family="DM Mono" font-size="8" fill="#8A8880">LISTEN</text>
+          <text x="246" y="285" text-anchor="middle" font-family="DM Mono" font-size="8" fill="#8A8880">FEEDBACK</text>
+          <text x="114" y="285" text-anchor="middle" font-family="DM Mono" font-size="8" fill="#8A8880">GROW</text>
+          <circle id="cd1" cx="180" cy="80" r="4" fill="#5DC99A"/>
+          <circle id="cd2" cx="280" cy="150" r="4" fill="#5DC99A"/>
+          <circle id="cd3" cx="240" cy="270" r="4" fill="#5DC99A"/>
+          <circle id="cd4" cx="120" cy="270" r="4" fill="#5DC99A"/>
+        </svg>
+      </div>
+      <div class="profile-synthesis">
+        <div class="profile-synthesis-label">Profile Summary</div>
+        <div class="profile-dimension"><span class="profile-dim-name">Coaching Mindset</span><span class="profile-dim-score" id="ps1">5/10</span></div>
+        <div class="profile-dimension"><span class="profile-dim-name">Listening Quality</span><span class="profile-dim-score" id="ps2">5/10</span></div>
+        <div class="profile-dimension"><span class="profile-dim-name">GROW Mastery</span><span class="profile-dim-score" id="ps3">5/10</span></div>
+        <div class="profile-dimension"><span class="profile-dim-name">Feedback Quality</span><span class="profile-dim-score" id="ps4">5/10</span></div>
+        <div class="profile-focus-area"><div class="profile-focus-label">Development Priority</div><p class="profile-focus-text" id="pfocus">Adjust the sliders to see your personalized development priority.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LAB ═══ -->
+<section id="lab" class="section-pad-surface">
+  <div class="section-header fade-in">
+    <div class="eyebrow">Personal Development Lab</div>
+    <h2 class="section-title">The 90-Day<br><em>Coaching Architecture</em></h2>
+  </div>
+  <div class="lab-grid fade-in">
+    <div class="lab-card"><div class="lab-card-bg-num">01</div><div class="lab-card-phase">Days 1–30 · Awareness</div><div class="lab-card-title">Build the Foundation</div><ul><li>Complete your coaching diagnostic and share it with one trusted direct report for their perspective.</li><li>Introduce GROW into your next three 1:1 meetings — tell the person what you're doing and why.</li><li>Start the 10-minute Friday self-coaching reflection. Write answers to the four questions.</li><li>Identify one person on your team who would most benefit from a dedicated coaching conversation this month.</li><li>Practice Level-3 Listening in your next three team meetings — notice what you were missing before.</li></ul></div>
+    <div class="lab-card"><div class="lab-card-bg-num">02</div><div class="lab-card-phase">Days 31–60 · Practice</div><div class="lab-card-title">Build the Habits</div><ul><li>Hold a pure coaching 1:1 with each direct report — use the 5-step protocol. No solving allowed.</li><li>Deliver three SBI feedback conversations — one developmental, one appreciative, one corrective.</li><li>Run one Team Coaching Circle: bring your team together, one person brings a real challenge, the group coaches using GROW.</li><li>Practice five questions from the powerful questions bank in real conversations — note which generate the most insight.</li><li>Map each direct report to a Blanchard development level (D1–D4) — adjust your leadership style accordingly.</li></ul></div>
+    <div class="lab-card"><div class="lab-card-bg-num">03</div><div class="lab-card-phase">Days 61–90 · Integration</div><div class="lab-card-title">Build the Culture</div><ul><li>Hold quarterly development conversations with each direct report — structured, 60-minute, GROW-based.</li><li>Launch the Feedback Friday Habit with your team — make peer feedback a bi-weekly norm.</li><li>Ask your team: "What is one thing I could do differently as your coach that would help you most?" Listen without defending.</li><li>Revisit your diagnostic — compare to Day 1. What has shifted? What still needs intentional focus?</li><li>Identify one person you will formally mentor in coaching skills — pass it on.</li></ul></div>
+  </div>
+  <div class="commitment-block fade-in">
+    <div class="commitment-left">
+      <div class="block-label">Executive Commitment</div>
+      <h3>Your Coaching<br>Leadership Contract</h3>
+      <p>This is not what you intend to do. It is what you are committing to — specifically, measurably, and by a date.</p>
+      <p>Return to this in 30 days. Not to judge what you didn't do — but to understand what made it harder than you expected. That understanding is itself a coaching conversation.</p>
+      <div class="reflection-card" style="margin-top:1.5rem;">
+        <div class="reflection-icon">🎯</div>
+        <p class="reflection-q">"If I became the coaching leader I am capable of being — what would my team look like in 12 months, and how would they describe me?"</p>
+      </div>
+    </div>
+    <div class="commitment-right">
+      <div class="commitment-input-group"><label class="commitment-input-label">The one coaching habit I am committing to daily</label><input type="text" class="commitment-input" placeholder="e.g. Ask before I solve — replace my first instinct to answer with one question."></div>
+      <div class="commitment-input-group"><label class="commitment-input-label">The first person I will coach using GROW — and when</label><input type="text" class="commitment-input" placeholder="e.g. Ahmad — our 1:1 this Thursday. I will use GROW for the full 30 minutes."></div>
+      <div class="commitment-input-group"><label class="commitment-input-label">The SBI feedback conversation I have been avoiding</label><textarea class="commitment-input" rows="2" placeholder="e.g. The conversation with Layla about her meeting behavior — I will have it by Friday using the SBI structure."></textarea></div>
+      <div class="commitment-input-group"><label class="commitment-input-label">How I will know coaching is becoming part of my leadership identity in 60 days</label><textarea class="commitment-input" rows="2" placeholder="e.g. My team will spontaneously bring me development questions, not just task questions..."></textarea></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SYNTHESIS ═══ -->
+<section id="synthesis">
+  <div class="synth-inner">
+    <div class="synth-header fade-in">
+      <div class="eyebrow">Module C — System Integration</div>
+      <h2 class="section-title">From Coaching Skills<br>to <em>Coaching Culture</em></h2>
+      <p>The four capabilities of Module C — coaching mindset, powerful questions, GROW mastery, and high-quality feedback — are a complete system. Each reinforces the others when practised consistently and intentionally.</p>
+    </div>
+    <div class="synth-principles fade-in">
+      <div class="synth-principle"><div class="synth-icon">🔄</div><div><h4>Coaching unlocks Belonging (Module B)</h4><p>A leader who coaches creates psychological safety — the foundation of belonging. When people feel developed rather than judged, they trust more, collaborate better, and bring their full thinking to the team. Coaching is Lencioni's trust foundation in practice.</p></div></div>
+      <div class="synth-principle"><div class="synth-icon">🌱</div><div><h4>Coaching enables Delegation (Module D)</h4><p>You cannot delegate effectively to someone who isn't developed. Coaching builds the capability, confidence, and judgment that make delegation safe — for both leader and team member. Module C is the prerequisite for Module D.</p></div></div>
+      <div class="synth-principle"><div class="synth-icon">❓</div><div><h4>Questions amplify Adaptability (Module A)</h4><p>The OODA Loop and Ladder of Inference from Module A require exactly the kind of thinking that powerful coaching questions develop. A team coached to question assumptions and reframe situations is exponentially more adaptive than one that is told what to think.</p></div></div>
+      <div class="synth-principle"><div class="synth-icon">⭐</div><div><h4>The compounding effect</h4><p>A coaching leader who has mastered Modules A, B, and C creates an exponential effect: they lead teams that are adaptive (A), collaborative (B), and self-developing (C) — teams that improve themselves without constant intervention. This is the architecture of organizational capability that outlasts any individual leader.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div><div class="footer-brand">Coaching Leadership</div><p class="footer-sub">Module C of the AGILE Leadership Excellence Framework. Incorporating GROW, Powerful Questions, SBI Feedback, 70-20-10, Situational Leadership II (Blanchard), Iceberg Model, Listening Levels, and Coaching in Cinema.</p></div>
+  <div class="footer-nav">
+    <a href="#course-intro">Introduction</a><a href="#learning-objectives">Objectives</a>
+    <a href="#mindset">Coaching Mindset</a><a href="#preguntar">Powerful Questions</a>
+    <a href="#grow">GROW Framework</a><a href="#feedback">Feedback & Delegation</a>
+    <a href="#cinema">Coaching in Cinema</a><a href="#proceso">Personal Process</a>
+    <a href="#datos">Data & Impact</a><a href="#cases">Case Studies</a>
+    <a href="#diagnostic">Diagnostic</a><a href="#lab">90-Day Lab</a>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <div class="footer-copy">AGILE Leadership Excellence · Module C — Coaching Leadership</div>
+  <div class="footer-copy">Flagship Executive Edition</div>
+</div>
+
+<script>
+// Progress
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  const s=window.scrollY;
+  const h=d.scrollHeight-d.clientHeight;
+  document.getElementById('progress-bar').style.width=(h>0?(s/h)*100:0)+'%';
+});
+
+// Fade-in
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');}),{threshold:.07});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// Nav active
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('nav ul li a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
+  navLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});
+});
+
+// Accordion
+function toggleAcc(btn){
+  const item=btn.parentElement;
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.accordion-item.open').forEach(i=>i.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+
+// Cases
+function switchCase(btn,id){
+  document.querySelectorAll('.cases-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.case-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+// GROW Simulator
+function switchGSim(btn,id){
+  document.querySelectorAll('.gsim-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.gsim-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+
+// Question Bank Filter
+function filterQ(btn,cat){
+  document.querySelectorAll('.q-filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.q-card').forEach(c=>{
+    c.classList.toggle('hidden', cat!=='all' && c.dataset.cat!==cat);
+  });
+}
+
+// Diagnostic Radar
+const focusTexts={
+  mindset:"Your Coaching Mindset is your priority. Start with one commitment: in your next three 1:1s, ask before you solve. Replace your instinct to answer with the question 'What do you think?' Notice what changes in the other person's engagement.",
+  listen:"Listening Quality is your development edge. Practice Level-3 listening deliberately in your next team meeting: no phone, no planning your response, full attention on what is being said AND not said. Afterwards, write down three things you noticed that you would previously have missed.",
+  grow:"GROW Mastery is your growth opportunity. Select one upcoming 1:1 and run it as a pure GROW conversation. Tell the person what you're doing. Use the scenario simulator above to prepare your questions. Debrief with the person afterwards: what was different about the conversation?",
+  feedback:"Feedback Quality is your highest-leverage area. Identify one person who deserves specific developmental feedback this week. Use the SBI structure: write the Situation, Behavior, and Impact before the conversation. Deliver it. Observe how much more clearly it lands when it's specific and behavioral.",
+  balanced:"Your profile shows balanced capability across all four dimensions. Your development priority is integration and cultural embedding — focus on consistency and on teaching what you know. Identify one team member you will specifically develop in coaching skills. Pass the capability on."
+};
+
+function updateDiagC(){
+  const vs=[1,2,3,4].map(i=>parseInt(document.getElementById('cs'+i).value));
+  vs.forEach((v,i)=>{
+    document.getElementById('cv'+(i+1)).textContent=v;
+    document.getElementById('ps'+(i+1)).textContent=v+'/10';
+  });
+  const cx=180,cy=180;
+  const axes=[{a:-90,r:100},{a:18,r:100},{a:90,r:90},{a:162,r:90}];
+  const pts=vs.map((v,i)=>{
+    const r=(v/10)*axes[i].r;
+    const rad=(axes[i].a*Math.PI)/180;
+    return{x:(cx+r*Math.cos(rad)).toFixed(1),y:(cy+r*Math.sin(rad)).toFixed(1)};
+  });
+  document.getElementById('radar-c-poly').setAttribute('points',pts.map(p=>`${p.x},${p.y}`).join(' '));
+  ['cd1','cd2','cd3','cd4'].forEach((id,i)=>{
+    document.getElementById(id).setAttribute('cx',pts[i].x);
+    document.getElementById(id).setAttribute('cy',pts[i].y);
+  });
+  const keys=['mindset','listen','grow','feedback'];
+  const mn=Math.min(...vs),mx=Math.max(...vs);
+  document.getElementById('pfocus').textContent=mx-mn<=2&&mn>=7?focusTexts.balanced:focusTexts[keys[vs.indexOf(mn)]];
+}
+updateDiagC();
+</script>
+</body>
+</html>
